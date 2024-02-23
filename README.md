@@ -17,7 +17,7 @@
 8. when done it will print your top 10 artists as well as you top 10 songs, if you type "y" to writing a stats.txt file it will contain more information and save in the same directory
 
 ## Examples
-1. [command prompt output](https://github.com/countervolts/Apple-Music-Stats-Calculator/blob/main/examples/top10.txt)
+1. [command prompt output](https://github.com/countervolts/Apple-Music-Stats-Calculator/blob/main/examples/CommandPromptOutput.txt)
 2. [full stats.txt output](https://github.com/countervolts/Apple-Music-Stats-Calculator/blob/main/examples/Stats.txt)
 
 ## Support
