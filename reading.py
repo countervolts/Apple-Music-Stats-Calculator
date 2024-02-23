@@ -107,18 +107,22 @@ if customize.lower() == 'y':
     while True:
         num_artists = int(input(f'\nHow many artists would you like to include? (Max: {max_artists}): '))
         if 0 < num_artists <= max_artists:
+            top_artists = grouped_artist.sort_values(ascending=False).head(num_artists)
             break
         else:
             print("Invalid input. Please enter a number between 1 and " + str(max_artists))
     while True:
         num_songs = int(input(f'\nHow many songs would you like to include? (Max: {max_songs}): '))
         if 0 < num_songs <= max_songs:
+            top_tracks = grouped_track.sort_values(ascending=False).head(num_songs)
             break
         else:
             print("Invalid input. Please enter a number between 1 and " + str(max_songs))
 else:
     num_artists = 50
     num_songs = 50
+    top_artists = top_50_artists
+    top_tracks = top_50_tracks
 
 with open('Stats.txt', 'w') as f:
     f.write(f"Total streams: {streams:,}\n")
@@ -128,7 +132,7 @@ with open('Stats.txt', 'w') as f:
     f.write(f"Different artists: {different_artists:,}\n\n")
     f.write(f"Top {num_artists} Most Streamed Artists:\n")
     f.write("-" * 30 + "\n")
-    for artist, time in list(top_50_artists.items())[:num_artists]:
+    for artist, time in list(top_artists.items())[:num_artists]:
         artist_df = df[df['Artist'] == artist]
         if artist_df.empty:
             continue
@@ -145,7 +149,7 @@ with open('Stats.txt', 'w') as f:
         f.write(f'   -> most streamed song: {most_streamed_song} - {most_streamed_song_time_hours} hours ({most_streamed_song_time:,.2f} minutes)\n\n')
     f.write(f"\nTop {num_songs} Most Streamed Tracks:\n")
     f.write("-" * 30 + "\n")
-    for track, time in list(top_50_tracks.items())[:num_songs]:
+    for track, time in list(top_tracks.items())[:num_songs]:
         minutes = time * 60
         first_listened = df[df['Track Description'] == track]['Date Played'].min().date()
         f.write(f'"{track}"\n')
