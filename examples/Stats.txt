@@ -302,6 +302,54 @@ Top 60 Most Streamed Artists:
    -> total listening time: 2.9 hours (174.00 minutes)
    -> most streamed song: Bakar - Hell N Back - 2.9 hours (175.41 minutes)
 
+"swimcoach" listened for 2.9 hours (174.00 minutes)
+   -> first listened on: 2020-04-25
+   -> first song streamed: swimcoach - u U U U u U did i mfken stutter?
+   -> total listening time: 2.9 hours (174.00 minutes)
+   -> most streamed song: swimcoach - u U U U u U did i mfken stutter? - 2.9 hours (175.07 minutes)
+
+"JAY-Z" listened for 2.7 hours (162.00 minutes)
+   -> first listened on: 2023-04-17
+   -> first song streamed: JAY-Z & Kanye West - Ni**as in Paris
+   -> total listening time: 2.7 hours (162.00 minutes)
+   -> most streamed song: JAY-Z & Kanye West - Ni**as in Paris - 2.7 hours (161.83 minutes)
+
+"Migos" listened for 2.7 hours (162.00 minutes)
+   -> first listened on: 2023-04-14
+   -> first song streamed: Migos - BBO (Bad Bitches Only) [feat. 21 Savage]
+   -> total listening time: 2.7 hours (162.00 minutes)
+   -> most streamed song: Migos - BBO (Bad Bitches Only) [feat. 21 Savage] - 2.1 hours (124.25 minutes)
+
+"Mac DeMarco" listened for 2.5 hours (150.00 minutes)
+   -> first listened on: 2023-05-25
+   -> first song streamed: Mac DeMarco - Moonlight on the River
+   -> total listening time: 2.5 hours (150.00 minutes)
+   -> most streamed song: Mac DeMarco - Moonlight on the River - 1.3 hours (76.58 minutes)
+
+"Ice Cube" listened for 2.4 hours (144.00 minutes)
+   -> first listened on: 2023-04-14
+   -> first song streamed: Ice Cube - It Was a Good Day
+   -> total listening time: 2.4 hours (144.00 minutes)
+   -> most streamed song: Ice Cube - It Was a Good Day - 1.5 hours (88.55 minutes)
+
+"Rex Orange County" listened for 2.4 hours (144.00 minutes)
+   -> first listened on: 2023-04-25
+   -> first song streamed: Rex Orange County - OPEN A WINDOW (feat. Tyler, The Creator)
+   -> total listening time: 2.4 hours (144.00 minutes)
+   -> most streamed song: Rex Orange County - OPEN A WINDOW (feat. Tyler, The Creator) - 1.3 hours (79.62 minutes)
+
+"Famous Dex" listened for 2.3 hours (138.00 minutes)
+   -> first listened on: 2023-04-24
+   -> first song streamed: Famous Dex - PICK IT UP (feat. A$AP Rocky)
+   -> total listening time: 2.3 hours (138.00 minutes)
+   -> most streamed song: Famous Dex - PICK IT UP (feat. A$AP Rocky) - 2.3 hours (139.09 minutes)
+
+"Laufey" listened for 2.2 hours (132.00 minutes)
+   -> first listened on: 2023-08-02
+   -> first song streamed: Laufey - From The Start
+   -> total listening time: 2.2 hours (132.00 minutes)
+   -> most streamed song: Laufey - From The Start - 2.1 hours (127.16 minutes)
+
 
 Top 60 Most Streamed Tracks:
 ------------------------------
@@ -504,3 +552,43 @@ Top 60 Most Streamed Tracks:
 "$uicideboy$ & Germ - Sorry for the Delay"
    -> listened for 3.3 hours (198.00 minutes)
    -> first listened on 2023-04-13
+
+"JPEGMAFIA - 1539 N. Calvert"
+   -> listened for 3.2 hours (192.00 minutes)
+   -> first listened on 2023-04-21
+
+"$uicideboy$ & Germ - The Serpent and the Rainbow"
+   -> listened for 3.2 hours (192.00 minutes)
+   -> first listened on 2023-04-17
+
+"$uicideboy$ - Mask & Da Glock (feat. Trippy tha Kid)"
+   -> listened for 3.2 hours (192.00 minutes)
+   -> first listened on 2023-11-09
+
+"$uicideboy$ - I Deleted Facebook a Long Time Ago"
+   -> listened for 3.1 hours (186.00 minutes)
+   -> first listened on 2023-06-21
+
+"XXXTENTACION - infinity (888) [feat. Joey Bada$$]"
+   -> listened for 3.0 hours (180.00 minutes)
+   -> first listened on 2020-04-17
+
+"Kanye West - Runaway (feat. Pusha T)"
+   -> listened for 3.0 hours (180.00 minutes)
+   -> first listened on 2023-04-14
+
+"Shoreline Mafia - Whuss the Deal"
+   -> listened for 3.0 hours (180.00 minutes)
+   -> first listened on 2023-04-17
+
+"$uicideboy$ - 5 Grand at 8 to 1"
+   -> listened for 3.0 hours (180.00 minutes)
+   -> first listened on 2023-04-15
+
+"Bakar - Hell N Back"
+   -> listened for 2.9 hours (174.00 minutes)
+   -> first listened on 2023-06-03
+
+"swimcoach - u U U U u U did i mfken stutter?"
+   -> listened for 2.9 hours (174.00 minutes)
+   -> first listened on 2020-04-25
