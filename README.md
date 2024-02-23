@@ -28,4 +28,4 @@ my discord is [._ayo](https://discord.com/users/488368000055902228) <--- or just
 2. add user input so they can get their top X amount of artists and songs
 
 ## **DISCLAIMER**
-THIS ISNT 100% ACCURATE DUE TO IT COUNTING SKIPPED "TRACK_SKIPPED_FORWARDS" AS LISTENED SONGS, it is about 75~% accurate (hours/minutes streamed WONT match apple music replay)
+THIS ISNT 100% ACCURATE DUE TO IT COUNTING SKIPPED "TRACK_SKIPPED_FORWARDS" AS LISTENED SONGS, it is about 75~% accurate (hours/minutes streamed WONT match apple music replay). Also this DOESNT dynamically update as you listen to Apple Music, it will be the most recent information from what day you requested your data
