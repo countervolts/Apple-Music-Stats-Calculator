@@ -8,7 +8,7 @@
 
 ## How to use the code
 1. run ```git clone https://github.com/countervolts/Apple-Music-Stats-Calculator```
-2. make sure that your "Apple Music - Play History Daily Tracks.csv" is in same folder as the stat calculator (should be C:\Users\<username>\Apple-Music-Stats-Calculator)
+2. make sure that your "Apple Music - Play History Daily Tracks.csv" is in same folder as the stat calculator (should be ```C:\Users\<username>\Apple-Music-Stats-Calculator```)
 3. run ```cd Apple-Music-Stats-Calculator```
 4. run ```pip install -r requirements.txt```
 5. run ```python reader.py```
