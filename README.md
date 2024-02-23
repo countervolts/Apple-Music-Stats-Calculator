@@ -31,5 +31,6 @@ Minutes Streamed: ~16.25%
 Hours Streamed: ~16.22%
 Different Artists: ~36.88%
 Different Songs: ~30.86%
+^^^^^^^^^^^^^^^^^^^^^^^^^^ -> these are just for me they will probably be different for you
 ```
 (small note: dates might not be 100% accurate)
