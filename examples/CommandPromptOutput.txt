@@ -36,7 +36,8 @@ Would you like to customize Stats.txt? (Auto generation includes the top 50 song
  /----------------------------------------------------------------------------------------------------------------------------\
 |   EVERYTHING BELOW HERE WIL BE CHANGED FOR YOU (if "n" is typed when asked to customize it will auto generate top 50)        |
  \----------------------------------------------------------------------------------------------------------------------------/
-  How many artists would you like to include? (Max: 619): 60
+
+How many artists would you like to include? (Max: 619): 60
 
 How many songs would you like to include? (Max: 1779): 60
 
