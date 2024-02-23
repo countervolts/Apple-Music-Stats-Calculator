@@ -4,6 +4,8 @@ from tqdm import tqdm
 
 current_dir = os.path.dirname(os.path.realpath(__file__))
 
+os.system('cls' if os.name == 'nt' else 'clear')
+
 while True:
     contents = os.listdir(current_dir)
     print(f'Current directory: {current_dir}')
@@ -33,6 +35,7 @@ while True:
         
         if os.path.isdir(file_dir):
             current_dir = file_dir
+            os.system('cls' if os.name == 'nt' else 'clear')  # clear the command line
             continue
         else:
             break
@@ -57,7 +60,6 @@ for i, row in df.iterrows():
 
 pbar.close()
 
-# For most streamed artists, count each artist separately
 df['Artists'] = df['Track Description'].apply(lambda x: x.split(' - ')[0].split(' & '))
 all_artists = df.explode('Artists')
 
@@ -65,7 +67,6 @@ grouped_artist = all_artists.groupby('Artists')['Play Duration Minutes'].sum()
 grouped_artist = grouped_artist.apply(lambda x: round(x/60, 1))
 top_50_artists = grouped_artist.sort_values(ascending=False).head(50)
 
-# For other calculations, use the main artist
 grouped_track = df.groupby('Track Description')['Play Duration Minutes'].sum()
 grouped_track = grouped_track.apply(lambda x: round(x/60, 1))
 top_50_tracks = grouped_track.sort_values(ascending=False).head(50)
