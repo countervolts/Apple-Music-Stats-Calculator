@@ -1,0 +1,31 @@
+Total streams: 20,697
+Total minutes streamed: 55,693.25
+Total hours streamed: 928.2
+Different tracks: 1,779
+Different artists: 619
+
+Top 10 Most Streamed Artists:
+------------------------------
+1. "$uicideboy$" - 351.5 hours (21,090.00 minutes)
+2. "Tyler, The Creator" - 64.8 hours (3,888.00 minutes)
+3. "Germ" - 50.9 hours (3,054.00 minutes)
+4. "Shakewell" - 30.6 hours (1,836.00 minutes)
+5. "Kanye West" - 24.8 hours (1,488.00 minutes)
+6. "$NOT" - 24.5 hours (1,470.00 minutes)
+7. "Joey Bada$$" - 22.3 hours (1,338.00 minutes)
+8. "Scrim" - 18.8 hours (1,128.00 minutes)
+9. "Kendrick Lamar" - 18.7 hours (1,122.00 minutes)
+10. "Playboi Carti" - 16.9 hours (1,014.00 minutes)
+
+Top 10 Most Streamed Tracks:
+------------------------------
+1. "$uicideboy$ - Hot Razor" - 12.8 hours (768.00 minutes)
+2. "Tyler, The Creator - GONE, GONE / THANK YOU" - 10.8 hours (648.00 minutes)
+3. "$uicideboy$ & Shakewell - Whole Lotta Grey" - 10.5 hours (630.00 minutes)
+4. "$uicideboy$ - Not Even Ghosts Are This Empty" - 8.9 hours (534.00 minutes)
+5. "$uicideboy$ & Shakewell - SHAMELESS $UICIDE" - 7.4 hours (444.00 minutes)
+6. "$uicideboy$ & Germ - My Swisher Sweet, But My Sig Sauer" - 7.1 hours (426.00 minutes)
+7. "$uicideboy$ - Matte Black" - 7.0 hours (420.00 minutes)
+8. "$uicideboy$ - whatwhat" - 7.0 hours (420.00 minutes)
+9. "$uicideboy$ & Germ - Champagne Face" - 6.9 hours (414.00 minutes)
+10. "Project Pat - Out There" - 6.6 hours (396.00 minutes)
