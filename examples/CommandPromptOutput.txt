@@ -41,7 +41,7 @@ How many artists would you like to include? (Max: 619): 60
 
 How many songs would you like to include? (Max: 1779): 60
 
-Stats.txt successfully written to C:\Users\<username>\Desktop\coding\Python\AM_project/Stats.txt
+Stats.txt successfully written to <file directory> <- this will the be the file dir (dif for all)
 
 It contains the following:
 60 artists and 60 songs
