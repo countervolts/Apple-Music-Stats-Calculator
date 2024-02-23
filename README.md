@@ -24,4 +24,4 @@
 my discord is [._ayo](https://discord.com/users/488368000055902228) <--- or just click the link
 
 ## **DISCLAIMER**
-THIS ISNT 100% ACCURATE DUE TO IT COUNTING SKIPPED "TRACK_SKIPPED_FORWARDS" AS LISTENED SONGS, it is about 85% to 90% accurate
+THIS ISNT 100% ACCURATE DUE TO IT COUNTING SKIPPED "TRACK_SKIPPED_FORWARDS" AS LISTENED SONGS, it is about 75~% accurate (hours/minutes streamed WONT match apple music replay)
