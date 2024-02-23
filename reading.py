@@ -1,6 +1,7 @@
 import os
 import pandas as pd
 from tqdm import tqdm
+import time
 
 current_dir = os.path.dirname(os.path.realpath(__file__))
 
@@ -99,10 +100,25 @@ for i, (track, time) in enumerate(top_50_tracks.items(), start=1):
     minutes = time * 60
     print(f'{i}. "{track}" - {time} hours ({minutes:,.2f} minutes)')
 
-if os.path.exists('Stats.txt'):
-    update = input('\nWould you like to update Stats.txt? \n\n(It will contain total streams, total minutes streamed, total hours streamed, number of different tracks, number of different artists, and the top 50 most streamed artists and tracks with their respective hours and minutes listened, and the first time each artist/track was listened to.) (y/n): ')
-    if update.lower() != 'y':
-        exit()
+customize = input('\nWould you like to customize Stats.txt? (Auto generation includes the top 50 songs and artists) (y/n): ')
+if customize.lower() == 'y':
+    max_artists = len(df['Artist'].unique())
+    max_songs = len(df['Track Description'].unique())
+    while True:
+        num_artists = int(input(f'\nHow many artists would you like to include? (Max: {max_artists}): '))
+        if 0 < num_artists <= max_artists:
+            break
+        else:
+            print("Invalid input. Please enter a number between 1 and " + str(max_artists))
+    while True:
+        num_songs = int(input(f'\nHow many songs would you like to include? (Max: {max_songs}): '))
+        if 0 < num_songs <= max_songs:
+            break
+        else:
+            print("Invalid input. Please enter a number between 1 and " + str(max_songs))
+else:
+    num_artists = 50
+    num_songs = 50
 
 with open('Stats.txt', 'w') as f:
     f.write(f"Total streams: {streams:,}\n")
@@ -110,9 +126,9 @@ with open('Stats.txt', 'w') as f:
     f.write(f"Total hours streamed: {hours_streamed:,}\n")
     f.write(f"Different tracks: {different_tracks:,}\n")
     f.write(f"Different artists: {different_artists:,}\n\n")
-    f.write("Top 50 Most Streamed Artists:\n")
+    f.write(f"Top {num_artists} Most Streamed Artists:\n")
     f.write("-" * 30 + "\n")
-    for artist, time in top_50_artists.items():
+    for artist, time in list(top_50_artists.items())[:num_artists]:
         artist_df = df[df['Artist'] == artist]
         if artist_df.empty:
             continue
@@ -127,9 +143,15 @@ with open('Stats.txt', 'w') as f:
         f.write(f'   -> first song streamed: {first_song}\n')
         f.write(f'   -> total listening time: {time} hours ({minutes:,.2f} minutes)\n')
         f.write(f'   -> most streamed song: {most_streamed_song} - {most_streamed_song_time_hours} hours ({most_streamed_song_time:,.2f} minutes)\n\n')
-    f.write("\nTop 50 Most Streamed Tracks:\n")
+    f.write(f"\nTop {num_songs} Most Streamed Tracks:\n")
     f.write("-" * 30 + "\n")
-    for track, time in top_50_tracks.items():
+    for track, time in list(top_50_tracks.items())[:num_songs]:
         minutes = time * 60
         first_listened = df[df['Track Description'] == track]['Date Played'].min().date()
-        f.write(f'"{track}" listened for {time} hours ({minutes:,.2f} minutes), first listened on {first_listened}\n')
+        f.write(f'"{track}"\n')
+        f.write(f'   -> listened for {time} hours ({minutes:,.2f} minutes)\n')
+        f.write(f'   -> first listened on {first_listened}\n\n')
+
+print(f"\nStats.txt successfully written to {os.getcwd()}/Stats.txt")
+print(f"\nIt contains the following: ")
+print(f"{num_artists} artists and {num_songs} songs")
