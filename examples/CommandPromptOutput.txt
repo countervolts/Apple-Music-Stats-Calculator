@@ -29,3 +29,18 @@ Top 10 Most Streamed Tracks:
 8. "$uicideboy$ - whatwhat" - 7.0 hours (420.00 minutes)
 9. "$uicideboy$ & Germ - Champagne Face" - 6.9 hours (414.00 minutes)
 10. "Project Pat - Out There" - 6.6 hours (396.00 minutes)
+
+Would you like to customize Stats.txt? (Auto generation includes the top 50 songs and artists) (y/n): y
+
+
+ /----------------------------------------------------------------------------------------------------------------------------\
+|   EVERYTHING BELOW HERE WIL BE CHANGED FOR YOU (if "n" is typed when asked to customize it will auto generate top 50)        |
+ \----------------------------------------------------------------------------------------------------------------------------/
+  How many artists would you like to include? (Max: 619): 60
+
+How many songs would you like to include? (Max: 1779): 60
+
+Stats.txt successfully written to C:\Users\<username>\Desktop\coding\Python\AM_project/Stats.txt
+
+It contains the following:
+60 artists and 60 songs
