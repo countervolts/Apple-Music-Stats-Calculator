@@ -23,9 +23,6 @@
 ## Support
 my discord is [._ayo](https://discord.com/users/488368000055902228) <--- or just click the link
 
-## Todo
-1. add user input so they can get their top X amount of artists and songs
-
 ## **DISCLAIMER**
 this isnt the perfect stats calculator here is by about how much each thing MIGHT be off by
 ```
