@@ -1,10 +1,12 @@
+-> NOTE: this will not always show 60 artists based off the customization from the user (default/auto generated = 50 of both artists and songs)
+
 Total streams: 20,697
 Total minutes streamed: 55,693.25
 Total hours streamed: 928.2
 Different tracks: 1,779
 Different artists: 619
 
-Top 50 Most Streamed Artists:
+Top 60 Most Streamed Artists:
 ------------------------------
 "$uicideboy$" listened for 351.5 hours (21,090.00 minutes)
    -> first listened on: 2023-04-13
@@ -154,7 +156,7 @@ Top 50 Most Streamed Artists:
    -> first listened on: 2023-04-19
    -> first song streamed: J. Cole - No Role Modelz
    -> total listening time: 6.4 hours (384.00 minutes)
-   -> most streamed song: J. Cole - 03’ Adolescence - 4.2 hours (250.47 minutes)
+   -> most streamed song: J. Cole - 03ï¿½ Adolescence - 4.2 hours (250.47 minutes)
 
 "Lil Uzi Vert" listened for 6.2 hours (372.00 minutes)
    -> first listened on: 2023-04-14
@@ -301,55 +303,204 @@ Top 50 Most Streamed Artists:
    -> most streamed song: Bakar - Hell N Back - 2.9 hours (175.41 minutes)
 
 
-Top 50 Most Streamed Tracks:
+Top 60 Most Streamed Tracks:
 ------------------------------
-"$uicideboy$ - Hot Razor" listened for 12.8 hours (768.00 minutes), first listened on 2023-06-11
-"Tyler, The Creator - GONE, GONE / THANK YOU" listened for 10.8 hours (648.00 minutes), first listened on 2023-04-14
-"$uicideboy$ & Shakewell - Whole Lotta Grey" listened for 10.5 hours (630.00 minutes), first listened on 2023-04-13
-"$uicideboy$ - Not Even Ghosts Are This Empty" listened for 8.9 hours (534.00 minutes), first listened on 2023-08-28
-"$uicideboy$ & Shakewell - SHAMELESS $UICIDE" listened for 7.4 hours (444.00 minutes), first listened on 2023-04-13
-"$uicideboy$ & Germ - My Swisher Sweet, But My Sig Sauer" listened for 7.1 hours (426.00 minutes), first listened on 2023-04-15
-"$uicideboy$ - Matte Black" listened for 7.0 hours (420.00 minutes), first listened on 2023-04-14
-"$uicideboy$ - whatwhat" listened for 7.0 hours (420.00 minutes), first listened on 2023-10-13
-"$uicideboy$ & Germ - Champagne Face" listened for 6.9 hours (414.00 minutes), first listened on 2023-04-13
-"Project Pat - Out There" listened for 6.6 hours (396.00 minutes), first listened on 2023-05-18
-"Joey Bada$$ - 95 Till Infinity" listened for 6.2 hours (372.00 minutes), first listened on 2023-04-14
-"21 Savage - a lot" listened for 6.1 hours (366.00 minutes), first listened on 2023-04-24
-"Westside Gunn & Joey Bada$$ - 327 (feat. Tyler, The Creator & Billie Essco)" listened for 6.0 hours (360.00 minutes), first listened on 2023-04-14
-"$uicideboy$ & Germ - Center Core Never More" listened for 5.6 hours (336.00 minutes), first listened on 2023-04-13
-"$uicideboy$ - Harvest Moon" listened for 5.4 hours (324.00 minutes), first listened on 2023-07-22
-"$uicideboy$ - The Number You Have Dialed Is Not in Service" listened for 5.4 hours (324.00 minutes), first listened on 2023-04-13
-"$uicideboy$ - Avalon" listened for 5.1 hours (306.00 minutes), first listened on 2023-04-14
-"DUCKBOY - EXCALIBUR" listened for 5.0 hours (300.00 minutes), first listened on 2023-12-15
-"XXXTENTACION - vice city" listened for 4.9 hours (294.00 minutes), first listened on 2023-04-14
-"$uicideboy$ - Genesis" listened for 4.9 hours (294.00 minutes), first listened on 2023-04-14
-"$uicideboy$ - Materialism as a Means to an End" listened for 4.8 hours (288.00 minutes), first listened on 2023-04-13
-"Tyler, The Creator & A$AP Rocky - Potato Salad" listened for 4.7 hours (282.00 minutes), first listened on 2023-04-15
-"Powfu - death bed (feat. beabadoobee) [coffee for your head]" listened for 4.6 hours (276.00 minutes), first listened on 2020-04-17
-"Tyler, The Creator - SWEET / I THOUGHT YOU WANTED TO DANCE (feat. Brent Faiyaz & Fana Hues)" listened for 4.6 hours (276.00 minutes), first listened on 2023-04-25
-"$uicideboy$ & Germ - BUCKHEAD" listened for 4.6 hours (276.00 minutes), first listened on 2023-04-17
-"Kendrick Lamar - m.A.A.d city (feat. MC Eiht)" listened for 4.6 hours (276.00 minutes), first listened on 2023-08-18
-"$uicideboy$ - Bossier City Kidnap Victims" listened for 4.4 hours (264.00 minutes), first listened on 2023-06-20
-"$uicideboy$ - 1000 Blunts" listened for 4.4 hours (264.00 minutes), first listened on 2023-04-14
-"$uicideboy$ - THE_EVIL_THAT_MEN_DO" listened for 4.4 hours (264.00 minutes), first listened on 2023-04-14
-"Tyler, The Creator - See You Again (feat. Kali Uchis)" listened for 4.3 hours (258.00 minutes), first listened on 2023-04-15
-"Joey Bada$$ - Righteous Minds" listened for 4.2 hours (252.00 minutes), first listened on 2023-04-15
-"J. Cole - 03’ Adolescence" listened for 4.2 hours (252.00 minutes), first listened on 2023-06-13
-"Kendrick Lamar - PRIDE." listened for 4.2 hours (252.00 minutes), first listened on 2023-04-13
-"$uicideboy$ & Germ - I Dream of Chrome" listened for 4.1 hours (246.00 minutes), first listened on 2023-04-17
-"$uicideboy$ & Shakewell - Big Shot Cream Soda" listened for 3.8 hours (228.00 minutes), first listened on 2023-04-17
-"Kendrick Lamar - Father Time (feat. Sampha)" listened for 3.8 hours (228.00 minutes), first listened on 2023-04-17
-"$uicideboy$ - Eulogy" listened for 3.7 hours (222.00 minutes), first listened on 2023-04-14
-"$uicideboy$ - Provolone & Heroin (feat. Freddie Dredd)" listened for 3.7 hours (222.00 minutes), first listened on 2023-07-04
-"$uicideboy$ & Travis Barker - Aliens Are Ghosts" listened for 3.7 hours (222.00 minutes), first listened on 2023-10-13
-"$uicideboy$ - All That Glitters Is Not Gold, But It's Still Damn Beautiful" listened for 3.6 hours (216.00 minutes), first listened on 2023-10-08
-"$uicideboy$ - If Self-Destruction Was an Olympic Event, I’d Be Tonya Harding" listened for 3.5 hours (210.00 minutes), first listened on 2023-04-17
-"MF DOOM - Doomsday (feat. Pebbles The Invisible Girl)" listened for 3.5 hours (210.00 minutes), first listened on 2023-04-15
-"$uicideboy$ - Fucking Your Culture" listened for 3.5 hours (210.00 minutes), first listened on 2023-04-14
-"Tyler, The Creator - ARE WE STILL FRIENDS?" listened for 3.4 hours (204.00 minutes), first listened on 2023-04-17
-"Logic - Self Medication (feat. Seth MacFarlane, Redman & Statik Selektah)" listened for 3.4 hours (204.00 minutes), first listened on 2023-04-14
-"Playboi Carti - Location" listened for 3.3 hours (198.00 minutes), first listened on 2023-04-14
-"$uicideboy$ & Germ - Obey the Walrus" listened for 3.3 hours (198.00 minutes), first listened on 2023-10-19
-"Playboi Carti - Long Time (Intro)" listened for 3.3 hours (198.00 minutes), first listened on 2023-04-19
-"Joey Bada$$ - Show Me" listened for 3.3 hours (198.00 minutes), first listened on 2023-04-19
-"$uicideboy$ & Germ - Sorry for the Delay" listened for 3.3 hours (198.00 minutes), first listened on 2023-04-13
+"$uicideboy$ - Hot Razor"
+   -> listened for 12.8 hours (768.00 minutes)
+   -> first listened on 2023-06-11
+
+"Tyler, The Creator - GONE, GONE / THANK YOU"
+   -> listened for 10.8 hours (648.00 minutes)
+   -> first listened on 2023-04-14
+
+"$uicideboy$ & Shakewell - Whole Lotta Grey"
+   -> listened for 10.5 hours (630.00 minutes)
+   -> first listened on 2023-04-13
+
+"$uicideboy$ - Not Even Ghosts Are This Empty"
+   -> listened for 8.9 hours (534.00 minutes)
+   -> first listened on 2023-08-28
+
+"$uicideboy$ & Shakewell - SHAMELESS $UICIDE"
+   -> listened for 7.4 hours (444.00 minutes)
+   -> first listened on 2023-04-13
+
+"$uicideboy$ & Germ - My Swisher Sweet, But My Sig Sauer"
+   -> listened for 7.1 hours (426.00 minutes)
+   -> first listened on 2023-04-15
+
+"$uicideboy$ - Matte Black"
+   -> listened for 7.0 hours (420.00 minutes)
+   -> first listened on 2023-04-14
+
+"$uicideboy$ - whatwhat"
+   -> listened for 7.0 hours (420.00 minutes)
+   -> first listened on 2023-10-13
+
+"$uicideboy$ & Germ - Champagne Face"
+   -> listened for 6.9 hours (414.00 minutes)
+   -> first listened on 2023-04-13
+
+"Project Pat - Out There"
+   -> listened for 6.6 hours (396.00 minutes)
+   -> first listened on 2023-05-18
+
+"Joey Bada$$ - 95 Till Infinity"
+   -> listened for 6.2 hours (372.00 minutes)
+   -> first listened on 2023-04-14
+
+"21 Savage - a lot"
+   -> listened for 6.1 hours (366.00 minutes)
+   -> first listened on 2023-04-24
+
+"Westside Gunn & Joey Bada$$ - 327 (feat. Tyler, The Creator & Billie Essco)"
+   -> listened for 6.0 hours (360.00 minutes)
+   -> first listened on 2023-04-14
+
+"$uicideboy$ & Germ - Center Core Never More"
+   -> listened for 5.6 hours (336.00 minutes)
+   -> first listened on 2023-04-13
+
+"$uicideboy$ - Harvest Moon"
+   -> listened for 5.4 hours (324.00 minutes)
+   -> first listened on 2023-07-22
+
+"$uicideboy$ - The Number You Have Dialed Is Not in Service"
+   -> listened for 5.4 hours (324.00 minutes)
+   -> first listened on 2023-04-13
+
+"$uicideboy$ - Avalon"
+   -> listened for 5.1 hours (306.00 minutes)
+   -> first listened on 2023-04-14
+
+"DUCKBOY - EXCALIBUR"
+   -> listened for 5.0 hours (300.00 minutes)
+   -> first listened on 2023-12-15
+
+"XXXTENTACION - vice city"
+   -> listened for 4.9 hours (294.00 minutes)
+   -> first listened on 2023-04-14
+
+"$uicideboy$ - Genesis"
+   -> listened for 4.9 hours (294.00 minutes)
+   -> first listened on 2023-04-14
+
+"$uicideboy$ - Materialism as a Means to an End"
+   -> listened for 4.8 hours (288.00 minutes)
+   -> first listened on 2023-04-13
+
+"Tyler, The Creator & A$AP Rocky - Potato Salad"
+   -> listened for 4.7 hours (282.00 minutes)
+   -> first listened on 2023-04-15
+
+"Powfu - death bed (feat. beabadoobee) [coffee for your head]"
+   -> listened for 4.6 hours (276.00 minutes)
+   -> first listened on 2020-04-17
+
+"Tyler, The Creator - SWEET / I THOUGHT YOU WANTED TO DANCE (feat. Brent Faiyaz & Fana Hues)"
+   -> listened for 4.6 hours (276.00 minutes)
+   -> first listened on 2023-04-25
+
+"$uicideboy$ & Germ - BUCKHEAD"
+   -> listened for 4.6 hours (276.00 minutes)
+   -> first listened on 2023-04-17
+
+"Kendrick Lamar - m.A.A.d city (feat. MC Eiht)"
+   -> listened for 4.6 hours (276.00 minutes)
+   -> first listened on 2023-08-18
+
+"$uicideboy$ - Bossier City Kidnap Victims"
+   -> listened for 4.4 hours (264.00 minutes)
+   -> first listened on 2023-06-20
+
+"$uicideboy$ - 1000 Blunts"
+   -> listened for 4.4 hours (264.00 minutes)
+   -> first listened on 2023-04-14
+
+"$uicideboy$ - THE_EVIL_THAT_MEN_DO"
+   -> listened for 4.4 hours (264.00 minutes)
+   -> first listened on 2023-04-14
+
+"Tyler, The Creator - See You Again (feat. Kali Uchis)"
+   -> listened for 4.3 hours (258.00 minutes)
+   -> first listened on 2023-04-15
+
+"Joey Bada$$ - Righteous Minds"
+   -> listened for 4.2 hours (252.00 minutes)
+   -> first listened on 2023-04-15
+
+"J. Cole - 03ï¿½ Adolescence"
+   -> listened for 4.2 hours (252.00 minutes)
+   -> first listened on 2023-06-13
+
+"Kendrick Lamar - PRIDE."
+   -> listened for 4.2 hours (252.00 minutes)
+   -> first listened on 2023-04-13
+
+"$uicideboy$ & Germ - I Dream of Chrome"
+   -> listened for 4.1 hours (246.00 minutes)
+   -> first listened on 2023-04-17
+
+"$uicideboy$ & Shakewell - Big Shot Cream Soda"
+   -> listened for 3.8 hours (228.00 minutes)
+   -> first listened on 2023-04-17
+
+"Kendrick Lamar - Father Time (feat. Sampha)"
+   -> listened for 3.8 hours (228.00 minutes)
+   -> first listened on 2023-04-17
+
+"$uicideboy$ - Eulogy"
+   -> listened for 3.7 hours (222.00 minutes)
+   -> first listened on 2023-04-14
+
+"$uicideboy$ - Provolone & Heroin (feat. Freddie Dredd)"
+   -> listened for 3.7 hours (222.00 minutes)
+   -> first listened on 2023-07-04
+
+"$uicideboy$ & Travis Barker - Aliens Are Ghosts"
+   -> listened for 3.7 hours (222.00 minutes)
+   -> first listened on 2023-10-13
+
+"$uicideboy$ - All That Glitters Is Not Gold, But It's Still Damn Beautiful"
+   -> listened for 3.6 hours (216.00 minutes)
+   -> first listened on 2023-10-08
+
+"$uicideboy$ - If Self-Destruction Was an Olympic Event, Iï¿½d Be Tonya Harding"
+   -> listened for 3.5 hours (210.00 minutes)
+   -> first listened on 2023-04-17
+
+"MF DOOM - Doomsday (feat. Pebbles The Invisible Girl)"
+   -> listened for 3.5 hours (210.00 minutes)
+   -> first listened on 2023-04-15
+
+"$uicideboy$ - Fucking Your Culture"
+   -> listened for 3.5 hours (210.00 minutes)
+   -> first listened on 2023-04-14
+
+"Tyler, The Creator - ARE WE STILL FRIENDS?"
+   -> listened for 3.4 hours (204.00 minutes)
+   -> first listened on 2023-04-17
+
+"Logic - Self Medication (feat. Seth MacFarlane, Redman & Statik Selektah)"
+   -> listened for 3.4 hours (204.00 minutes)
+   -> first listened on 2023-04-14
+
+"Playboi Carti - Location"
+   -> listened for 3.3 hours (198.00 minutes)
+   -> first listened on 2023-04-14
+
+"$uicideboy$ & Germ - Obey the Walrus"
+   -> listened for 3.3 hours (198.00 minutes)
+   -> first listened on 2023-10-19
+
+"Playboi Carti - Long Time (Intro)"
+   -> listened for 3.3 hours (198.00 minutes)
+   -> first listened on 2023-04-19
+
+"Joey Bada$$ - Show Me"
+   -> listened for 3.3 hours (198.00 minutes)
+   -> first listened on 2023-04-19
+
+"$uicideboy$ & Germ - Sorry for the Delay"
+   -> listened for 3.3 hours (198.00 minutes)
+   -> first listened on 2023-04-13
