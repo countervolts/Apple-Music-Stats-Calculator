@@ -22,4 +22,4 @@
 
 ## Support / Suggestions
 my discord is [._ayo](https://discord.com/users/488368000055902228) <--- or just click the link
-
+support discord server: [invite](https://discord.gg/rP63gxfKQJ)
