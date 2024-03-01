@@ -23,5 +23,6 @@
 ## Support / Suggestions
 my discord is [._ayo](https://discord.com/users/488368000055902228) <--- or just click the link
 support discord server: [invite](https://discord.gg/rP63gxfKQJ)
+
 ##pylint
 pylint rated my code a 8.35/10 (very cool!! + better than spotify calc code)
