@@ -49,6 +49,8 @@ df = pd.read_csv(file_dir, parse_dates=['Date Played'])
 
 pbar = tqdm(total=len(df), desc='Reading CSV', dynamic_ncols=True, position=0, leave=True)
 
+os.system('cls' if os.name == 'nt' else 'clear')
+
 for i, row in df.iterrows():
     pbar.update(1)
     artist = row['Track Description'].split(' - ')[0]
