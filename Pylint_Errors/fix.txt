@@ -1,0 +1,18 @@
+> pylint .\reading.py
+************* Module reading
+reading.py:14:0: C0301: Line too long (109/100) (line-too-long)
+reading.py:73:0: C0301: Line too long (125/100) (line-too-long)
+reading.py:78:0: C0301: Line too long (105/100) (line-too-long)
+reading.py:112:0: C0301: Line too long (107/100) (line-too-long)
+reading.py:113:0: C0301: Line too long (109/100) (line-too-long)
+reading.py:119:0: C0301: Line too long (151/100) (line-too-long)
+reading.py:131:0: C0304: Final newline missing (missing-final-newline)
+reading.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+reading.py:8:0: C0103: Constant name "filename" doesn't conform to UPPER_CASE naming style (invalid-name)
+reading.py:79:8: R1723: Unnecessary "else" after "break", remove the "else" and de-indent the code inside it (no-else-break)
+reading.py:86:8: R1723: Unnecessary "else" after "break", remove the "else" and de-indent the code inside it (no-else-break)
+reading.py:92:4: C0103: Constant name "num_artists" doesn't conform to UPPER_CASE naming style (invalid-name)
+reading.py:93:4: C0103: Constant name "num_songs" doesn't conform to UPPER_CASE naming style (invalid-name)
+reading.py:97:5: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+reading.py:130:6: W1309: Using an f-string that does not have any interpolated variables (f-string-without-interpolation)
+reading.py:4:0: C0411: standard import "time" should be placed before third party imports "pandas", "tqdm.tqdm" (wrong-import-order)
