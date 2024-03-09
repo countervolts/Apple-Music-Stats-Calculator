@@ -3,47 +3,15 @@ import pandas as pd
 from tqdm import tqdm
 import time
 
-current_dir = os.path.dirname(os.path.realpath(__file__))
+downloads_dir = os.path.join(os.path.expanduser('~'), 'Downloads')
 
-os.system('cls' if os.name == 'nt' else 'clear')
+filename = "Apple Music - Play History Daily Tracks.csv"
 
-while True:
-    contents = os.listdir(current_dir)
-    print(f'Current directory: {current_dir}')
-    
-    csv_files = [item for item in contents if item.endswith('.csv')]
-    if csv_files:
-        csv_files.sort(key=lambda x: os.path.getsize(os.path.join(current_dir, x)), reverse=True)
-        for i, item in enumerate(csv_files, start=1):
-            size = os.path.getsize(os.path.join(current_dir, item))
-            size_mb = size / (1024 * 1024)
-            size_kb = size / 1024
-            if size_mb < 1:
-                print(f'{i}. {item} - {size_kb:.2f} KB')
-            else:
-                print(f'{i}. {item} - {size_mb:.2f} MB')
-        prompt = 'Pick a CSV: '
-    else:
-        for i, item in enumerate(contents, start=1):
-            print(f'{i}. {item}')
-        prompt = 'Enter the number of the item to select: '
+file_dir = os.path.join(downloads_dir, filename)
 
-    choice = input(prompt)
-
-    try:
-        choice = int(choice)
-        file_dir = os.path.join(current_dir, csv_files[choice-1] if csv_files else contents[choice-1])
-        
-        if os.path.isdir(file_dir):
-            current_dir = file_dir
-            os.system('cls' if os.name == 'nt' else 'clear')  # clear the command line
-            continue
-        else:
-            break
-    except (ValueError, IndexError):
-        print('Invalid choice, please try again.')
-
-os.system('cls' if os.name == 'nt' else 'clear')
+if not os.path.isfile(file_dir):
+    print(f"{filename} was not found.")
+    input(f"please extract {filename} to your download and re-run the code please :) \n press enter to exit")
 
 df = pd.read_csv(file_dir, parse_dates=['Date Played'])
 
