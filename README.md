@@ -30,4 +30,4 @@ my discord is [._ayo](https://discord.com/users/488368000055902228) <--- or just
 support discord server: [invite](https://discord.gg/rP63gxfKQJ)
 
 ## pylint
-pylint rated my code a 8.52/10 (+.17%) (very cool!! + better than spotify calc code)
+pylint rated my code a 8.52/10 (+.17)
