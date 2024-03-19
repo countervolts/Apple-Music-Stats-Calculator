@@ -94,7 +94,29 @@ else:
     top_artists = top_50_artists
     top_tracks = top_50_tracks
 
-with open('Stats.txt', 'w') as f:
+num_top_artists = int(input('\nHow many top artists would you like to create files for?: '))
+
+os.makedirs(os.path.expanduser('~/Downloads/AppleMusicStats/Artists'), exist_ok=True)
+
+for artist in top_50_artists.index[:num_top_artists]:
+    artist_df = df[df['Artist'] == artist]
+    
+    total_streaming_time = artist_df['Play Duration Minutes'].sum()
+    first_time_streamed = artist_df['Date Played'].min()
+    different_tracks = artist_df['Track Description'].nunique()
+    
+    top_10_songs = artist_df.groupby('Track Description')['Play Duration Minutes'].sum().nlargest(10)
+    
+    with open(os.path.expanduser(f'~/Downloads/AppleMusicStats/Artists/{artist}.txt'), 'w') as f:
+        f.write(f"Artist: {artist}\n")
+        f.write(f"Total streaming time: {total_streaming_time:,.2f} minutes\n")
+        f.write(f"First time streamed: {first_time_streamed}\n")
+        f.write(f"Different tracks: {different_tracks:,}\n\n")
+        f.write("Top 10 Most Played Songs:\n")
+        for song, time in top_10_songs.items():
+            f.write(f'"{song}" - {time:,.2f} minutes\n')
+
+with open(os.path.expanduser('~/Downloads/AppleMusicStats/Stats.txt'), 'w') as f:
     f.write(f"Total streams: {streams:,}\n")
     f.write(f"Total minutes streamed: {round(minutes_streamed, 2):,}\n")
     f.write(f"Total hours streamed: {hours_streamed:,}\n")
@@ -126,6 +148,6 @@ with open('Stats.txt', 'w') as f:
         f.write(f'   -> listened for {time} hours ({minutes:,.2f} minutes)\n')
         f.write(f'   -> first listened on {first_listened}\n\n')
 
-print(f"\nStats.txt successfully written to {os.getcwd()}/Stats.txt")
+print(f"\nStats.txt successfully written to {os.path.expanduser('~/Downloads/AppleMusicStats/Stats.txt')}")
 print(f"\nIt contains the following: ")
 print(f"{num_artists} artists and {num_songs} songs")
