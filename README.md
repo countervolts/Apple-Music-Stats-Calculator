@@ -28,4 +28,4 @@ my discord is [._ayo](https://discord.com/users/488368000055902228) <--- or just
 support discord server: [invite](https://discord.gg/rP63gxfKQJ)
 
 ## pylint
-pylint rated my code a 8.52/10 (+.17)
+pylint rated my code a 8.23/10 (previous run: 8.52/10, -0.29) :.(
