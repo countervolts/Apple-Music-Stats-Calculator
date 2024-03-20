@@ -70,10 +70,11 @@ for i, (track, time) in enumerate(top_50_tracks.items(), start=1):
     minutes = time * 60
     print(f'{i}. "{track}" - {time} hours ({minutes:,.2f} minutes)')
 
+max_artists = len(df['Artist'].unique())
+max_songs = len(df['Track Description'].unique())
+
 customize = input('\nWould you like to customize Stats.txt? (Auto generation includes the top 50 songs and artists) (y/n): ')
 if customize.lower() == 'y':
-    max_artists = len(df['Artist'].unique())
-    max_songs = len(df['Track Description'].unique())
     while True:
         num_artists = int(input(f'\nHow many artists would you like to include? (Max: {max_artists}): '))
         if 0 < num_artists <= max_artists:
@@ -94,7 +95,7 @@ else:
     top_artists = top_50_artists
     top_tracks = top_50_tracks
 
-num_top_artists = int(input('\nHow many top artists would you like to create files for?: '))
+num_top_artists = int(input(f'\nHow many top artists would you like to create files for? (Max: {max_artists}): '))
 
 os.makedirs(os.path.expanduser('~/Downloads/AppleMusicStats/Artists'), exist_ok=True)
 
@@ -148,6 +149,13 @@ with open(os.path.expanduser('~/Downloads/AppleMusicStats/Stats.txt'), 'w') as f
         f.write(f'   -> listened for {time} hours ({minutes:,.2f} minutes)\n')
         f.write(f'   -> first listened on {first_listened}\n\n')
 
-print(f"\nStats.txt successfully written to {os.path.expanduser('~/Downloads/AppleMusicStats/Stats.txt')}")
-print(f"\nIt contains the following: ")
-print(f"{num_artists} artists and {num_songs} songs")
+print(f"\nAppleMusicStats successfully written to {os.path.expanduser('~/Downloads/AppleMusicStats')}")
+
+for dirpath, dirnames, filenames in os.walk(os.path.expanduser('~/Downloads/AppleMusicStats')):
+    print(f'\n{dirpath}')
+    for filename in filenames:
+        print(f'├── {filename}')
+
+input("\nPress Enter to view you stats :)")
+
+os.system("start " + os.path.expanduser('~/Downloads/AppleMusicStats'))
