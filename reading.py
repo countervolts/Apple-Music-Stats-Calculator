@@ -1,7 +1,7 @@
 import os
+import time
 import pandas as pd
 from tqdm import tqdm
-import time
 
 downloads_dir = os.path.join(os.path.expanduser('~'), 'Downloads')
 
