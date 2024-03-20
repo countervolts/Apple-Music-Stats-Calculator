@@ -32,16 +32,27 @@ Top 10 Most Streamed Tracks:
 
 Would you like to customize Stats.txt? (Auto generation includes the top 50 songs and artists) (y/n): y
 
-
- /----------------------------------------------------------------------------------------------------------------------------\
-|   EVERYTHING BELOW HERE WIL BE CHANGED FOR YOU (if "n" is typed when asked to customize it will auto generate top 50)        |
- \----------------------------------------------------------------------------------------------------------------------------/
-
 How many artists would you like to include? (Max: 619): 60
 
 How many songs would you like to include? (Max: 1779): 60
 
-Stats.txt successfully written to <file directory> <- this will the be the file dir (dif for all)
+How many top artists would you like to create files for? (Max: 619): 10
 
-It contains the following:
-60 artists and 60 songs
+AppleMusicStats successfully written to <folder dir>
+
+<folder dir>
+├── Stats.txt
+
+<folder dir>/Artists
+├── $NOT.txt
+├── $uicideboy$.txt
+├── Germ.txt
+├── Joey Bada$$.txt
+├── Kanye West.txt
+├── Kendrick Lamar.txt
+├── Playboi Carti.txt
+├── Scrim.txt
+├── Shakewell.txt
+├── Tyler, The Creator.txt
+
+Press Enter to view you stats :) (<-- opens <folder dir>) 
