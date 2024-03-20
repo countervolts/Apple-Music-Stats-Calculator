@@ -11,7 +11,10 @@ thanks! <3
 4. Only select “Apple Media services”
 5. Scroll down and click the blue “continue” button
 
-## How to use the code
+## Executable!
+download and run [reading.exe](https://github.com/countervolts/Apple-Music-Stats-Calculator/releases/tag/executable) 
+
+## How to run the code
 1. run ```git clone https://github.com/countervolts/Apple-Music-Stats-Calculator```
 2. make sure that your "Apple Music - Play History Daily Tracks.csv" is in downloads folder
 3. run ```cd Apple-Music-Stats-Calculator```
@@ -28,4 +31,4 @@ my discord is [._ayo](https://discord.com/users/488368000055902228) <--- or just
 support discord server: [invite](https://discord.gg/rP63gxfKQJ)
 
 ## pylint
-pylint rated my code a 8.23/10 (previous run: 8.52/10, -0.29) :.(
+pylint rated my code a 8.44/10 (previous run: 8.23/10, +0.21) :D
