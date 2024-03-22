@@ -24,7 +24,7 @@ download and run [reading.exe](https://github.com/countervolts/Apple-Music-Stats
 
 ## Examples
 1. [command prompt output](https://github.com/countervolts/Apple-Music-Stats-Calculator/blob/main/examples/CommandPromptOutput.txt)
-2. [full stats.txt output](https://github.com/countervolts/Apple-Music-Stats-Calculator/blob/main/examples/Stats.txt)
+2. [AppleMusicStats folder output](https://github.com/countervolts/Apple-Music-Stats-Calculator/tree/main/examples/AppleMusicStats)
 
 ## Support / Suggestions
 my discord is [._ayo](https://discord.com/users/488368000055902228) <--- or just click the link
