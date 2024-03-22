@@ -23,12 +23,14 @@ download and run [reading.exe](https://github.com/countervolts/Apple-Music-Stats
 6. when ran it will automaticallly scan your downloads for the play history daily tracks file and calculate
 
 ## Examples
-1. [command prompt output](https://github.com/countervolts/Apple-Music-Stats-Calculator/blob/main/examples/CommandPromptOutput.txt)
-2. [AppleMusicStats folder output](https://github.com/countervolts/Apple-Music-Stats-Calculator/tree/main/examples/AppleMusicStats)
-
+1. [Command Prompt Output](https://github.com/countervolts/Apple-Music-Stats-Calculator/blob/main/examples/CommandPromptOutput.txt)
+2. [Artists Folder](https://github.com/countervolts/Apple-Music-Stats-Calculator/tree/main/examples/AppleMusicStats/Artists)
+3. [Stats.txt Output](https://github.com/countervolts/Apple-Music-Stats-Calculator/blob/main/examples/AppleMusicStats/Stats.txt)  
+4. [StatsSimplified](https://github.com/countervolts/Apple-Music-Stats-Calculator/tree/main/examples/AppleMusicStats/StatsSimplified)
+5. [AppleMusicStats Folder Output](https://github.com/countervolts/Apple-Music-Stats-Calculator/tree/main/examples/AppleMusicStats)
 ## Support / Suggestions
 my discord is [._ayo](https://discord.com/users/488368000055902228) <--- or just click the link
 support discord server: [invite](https://discord.gg/rP63gxfKQJ)
 
 ## pylint
-pylint rated my code a 8.44/10 (previous run: 8.23/10, +0.21) :D
+pylint rated my code a 7.42/10 (previous run: 8.44/10, -1.02) :(
