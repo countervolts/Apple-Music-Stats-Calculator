@@ -28,8 +28,10 @@ download and run [reading.exe](https://github.com/countervolts/Apple-Music-Stats
 3. [Stats.txt Output](https://github.com/countervolts/Apple-Music-Stats-Calculator/blob/main/examples/AppleMusicStats/Stats.txt)  
 4. [StatsSimplified](https://github.com/countervolts/Apple-Music-Stats-Calculator/tree/main/examples/AppleMusicStats/StatsSimplified)
 5. [AppleMusicStats Folder Output](https://github.com/countervolts/Apple-Music-Stats-Calculator/tree/main/examples/AppleMusicStats)
+
 ## Support / Suggestions
 my discord is [._ayo](https://discord.com/users/488368000055902228) <--- or just click the link
+
 support discord server: [invite](https://discord.gg/rP63gxfKQJ)
 
 ## pylint
