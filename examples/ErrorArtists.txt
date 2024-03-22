@@ -1,0 +1,6 @@
+Artist: Nodame Cantabile
+Error: 'charmap' codec can't encode characters in position 46-49: character maps to <undefined>
+
+Artist: Miki Matsubara
+Error: 'charmap' codec can't encode characters in position 44-49: character maps to <undefined>
+
