@@ -4,3 +4,5 @@ Error: 'charmap' codec can't encode characters in position 46-49: character maps
 Artist: Miki Matsubara
 Error: 'charmap' codec can't encode characters in position 44-49: character maps to <undefined>
 
+Artist: DUCKBOY
+UnicodeEncodeError: 'charmap' codec can't encode character \u30c4 in position 13: character maps to <undefined>
