@@ -101,13 +101,10 @@ def create_artist_files(data_frame, top_artists_list, max_artists_count):
     if create_artists_folder.lower() == 'y':
         num_top_artists = int(input(f'\nHow many top artists would you like to create files for? (Max: {max_artists_count}): '))
 
-        os.makedirs(os.path.expanduser('~/Downloads/AppleMusicStats/Artists'), exist_ok=True)
-        os.makedirs(os.path.expanduser('~/Downloads/AppleMusicStats/Artists/MultipleArtists'), exist_ok=True)
-
         error_count = 0
         for artist, time in list(top_artists_list.items())[:num_top_artists]:
             safe_artist = artist.encode('ascii', 'ignore').decode()
-            safe_artist_filename = re.sub(r'[\\/*?:"<>|]', "", safe_artist)
+            safe_artist_filename = re.sub(r'[\\/*?:"<>|]', "", safe_artist)  # replace commas as well
             artist_df = data_frame[data_frame['Artist'] == safe_artist]
             if artist_df.empty:
                 continue
@@ -116,8 +113,13 @@ def create_artist_files(data_frame, top_artists_list, max_artists_count):
             max_songs = artist_df['Track Description'].nunique()
             top_songs = artist_df.groupby('Track Description')['Play Duration Minutes'].sum().sort_values(ascending=False).head(10)
             safe_songs = {song.encode('ascii', 'ignore').decode(): time for song, time in top_songs.items()}
+            if ',' in safe_artist and safe_artist != 'Tyler, The Creator':
+                folder = 'MultipleArtists'
+            else:
+                folder = 'Artists'
+            os.makedirs(os.path.expanduser(f'~/Downloads/AppleMusicStats/{folder}'), exist_ok=True)
             try:
-                with open(os.path.expanduser(f'~/Downloads/AppleMusicStats/Artists/{safe_artist_filename}.txt'), 'w', encoding='utf-8') as artist_file:
+                with open(os.path.expanduser(f'~/Downloads/AppleMusicStats/{folder}/{safe_artist_filename}.txt'), 'w', encoding='utf-8') as artist_file:
                     artist_file.write(f"Artist: {safe_artist}\n")
                     artist_file.write(f"Total streaming time: {total_streaming_time:,.2f} minutes\n")
                     artist_file.write(f"First time streamed: {first_time_streamed}\n")
@@ -135,7 +137,7 @@ def create_artist_files(data_frame, top_artists_list, max_artists_count):
                 print(f"Failed to open file for artist: {safe_artist_filename}")
                 print(f"Error: {os_error}")
     else:
-        print(":( it took soooooooooooo long to write this code :3")
+        print("it took soooooooooooo long to write this code u suck pls use it >:(")
 create_artist_files(df, top_artists, max_artists)
                             
 with open(os.path.expanduser('~/Downloads/AppleMusicStats/Stats.txt'), 'w') as f:
