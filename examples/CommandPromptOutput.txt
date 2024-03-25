@@ -7,15 +7,15 @@ Different artists: 570
 
 Top 10 Most Streamed Artists:
 ------------------------------
-1. "$uicideboy$" - 351.5 hours (21,090.00 minutes)
+1. "$uicideboy$" - 351.5 hours (21,090.00 minutes)     
 2. "Tyler, The Creator" - 64.8 hours (3,888.00 minutes)
-3. "Kanye West" - 22.0 hours (1,320.00 minutes)
+3. "Kanye West" - 22.0 hours (1,320.00 minutes)        
 4. "$NOT" - 21.9 hours (1,314.00 minutes)
 5. "Scrim" - 18.8 hours (1,128.00 minutes)
-6. "Kendrick Lamar" - 17.9 hours (1,074.00 minutes)
-7. "Playboi Carti" - 16.9 hours (1,014.00 minutes)
+6. "Kendrick Lamar" - 17.9 hours (1,074.00 minutes)    
+7. "Playboi Carti" - 16.9 hours (1,014.00 minutes)     
 8. "Joey Bada$$" - 16.3 hours (978.00 minutes)
-9. "XXXTENTACION" - 15.5 hours (930.00 minutes)
+9. "XXXTENTACION" - 15.5 hours (930.00 minutes)        
 10. "MF DOOM" - 15.0 hours (900.00 minutes)
 
 Top 10 Most Streamed Tracks:
@@ -36,30 +36,26 @@ Would you like to customize Stats.txt? (Auto generation includes the top 50 song
 Would you like to create the artists folder? (y/n): y
 
 How many top artists would you like to create files for? (Max: 570): 10
+Here are the created files:
 
-AppleMusicStats successfully written to ~/Downloads/AppleMusicStats\StatsSimplified
+******************************
+/AppleMusicStats
+Number of files: 1
+Number of folder: 2
+******************************
 
-~/Downloads/AppleMusicStats\StatsSimplified
-├── Stats.txt
+******************************
+/AppleMusicStats/Artists
+Number of files: 10
+Number of folder: 0
+******************************
 
-~/Downloads/AppleMusicStats\StatsSimplified
-├── $NOT.txt
-├── $uicideboy$.txt
-├── Joey Bada$$.txt
-├── Kanye West.txt
-├── Kendrick Lamar.txt
-├── MF DOOM.txt
-├── Playboi Carti.txt
-├── Scrim.txt
-├── Tyler, The Creator.txt
-├── XXXTENTACION.txt
 
-~/Downloads/AppleMusicStats\StatsSimplified
+******************************
+/AppleMusicStats/StatsSimplified
+Number of files: 3
+Number of folder: 0
+******************************
 
-~/Downloads/AppleMusicStats\StatsSimplified
-├── TopArtists.txt
-├── TopSongs.txt
 
-Total files: 13
-
-Press enter to view your stats :) (<-- opens ~/Downloads/AppleMusicStats)
+Press enter to view your stats :)
