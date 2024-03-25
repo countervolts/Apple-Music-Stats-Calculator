@@ -1,13 +1,17 @@
 import os
 import re
+import shutil
 import time
 import pandas as pd
 from tqdm import tqdm
+
 downloads_dir = os.path.join(os.path.expanduser('~'), 'Downloads')
 
 filename = "Apple Music - Play History Daily Tracks.csv"
 
 file_dir = os.path.join(downloads_dir, filename)
+
+delete_this = os.path.join(downloads_dir, 'AppleMusicStats')
 
 if not os.path.isfile(file_dir):
     print(f"{filename} was not found.")
@@ -72,6 +76,9 @@ for i, (track, time) in enumerate(top_50_tracks.items(), start=1):
 max_artists = len(df['Artist'].unique())
 max_songs = len(df['Track Description'].unique())
 
+if os.path.exists(os.path.expanduser('~/Downloads/AppleMusicStats/')):
+    shutil.rmtree(os.path.expanduser('~/Downloads/AppleMusicStats/'))
+
 os.makedirs(os.path.expanduser('~/Downloads/AppleMusicStats/'), exist_ok=True)
 
 customize = input('\nWould you like to customize Stats.txt? (Auto generation includes the top 50 songs and artists) (y/n): ')
@@ -104,7 +111,7 @@ def create_artist_files(data_frame, top_artists_list, max_artists_count):
         error_count = 0
         for artist, time in list(top_artists_list.items())[:num_top_artists]:
             safe_artist = artist.encode('ascii', 'ignore').decode()
-            safe_artist_filename = re.sub(r'[\\/*?:"<>|]', "", safe_artist)  # replace commas as well
+            safe_artist_filename = re.sub(r'[\\/*?:"<>|]', "", safe_artist)
             artist_df = data_frame[data_frame['Artist'] == safe_artist]
             if artist_df.empty:
                 continue
@@ -215,21 +222,31 @@ with open(os.path.expanduser('~/Downloads/AppleMusicStats/StatsSimplified/TopSon
                 error_file_param.write(f"Song: {safe_song_param}\n")
                 error_file_param.write(f"Error: {str(e_param)}\n\n")
 
-print(f"\nAppleMusicStats successfully written to {os.path.expanduser('~/Downloads/AppleMusicStats')}")
+with open(os.path.expanduser('~/Downloads/AppleMusicStats/StatsSimplified/StatsSimplified.txt'), 'w', encoding='utf-8') as f:
+    f.write(f"Total streams: {streams:,}\n")
+    f.write(f"Total minutes streamed: {round(minutes_streamed, 2):,}\n")
+    f.write(f"Total hours streamed: {hours_streamed:,}\n")
+    f.write(f"Total days streamed: {round(hours_streamed / 24, 1):,}\n")
+    f.write(f"Different tracks: {max_songs:,}\n")
+    f.write(f"Different artists: {different_artists:,}\n\n")
 
-TOTAL_FILES = 0
-for dirpath, dirnames, filenames in os.walk(os.path.expanduser('~/Downloads/AppleMusicStats')):
-    print(f'\n{dirpath}')
-    LINE_COUNT = 0
-    for filename in filenames:
-        TOTAL_FILES += 1
-        if LINE_COUNT < 15:
-            print(f'├── {filename}')
-            LINE_COUNT += 1
-    if LINE_COUNT >= 15:
-        print(f"... and {len(filenames) - 15 if len(filenames) > 15 else 0} more files in this directory.")
+def print_directory_contents(path, prefix=""):
+    expanded_path = os.path.expanduser(path)
+    if os.path.exists(expanded_path):
+        num_files = len([f for f in os.listdir(expanded_path) if os.path.isfile(os.path.join(expanded_path, f))])
+        num_dirs = len([d for d in os.listdir(expanded_path) if os.path.isdir(os.path.join(expanded_path, d))])
+        print(f"\n{'*' * 30}")
+        print(f"{prefix}")
+        print(f"Number of files: {num_files}")
+        print(f"Number of folder: {num_dirs}")
+        print(f"{'*' * 30}\n")
+        for child in os.listdir(expanded_path):
+            child_path = os.path.join(expanded_path, child)
+            if os.path.isdir(child_path):
+                print_directory_contents(child_path, prefix=f"{prefix}/{child}")
 
-print(f"\nTotal files: {TOTAL_FILES}")
+print("Here are the created files:")
+print_directory_contents('~/Downloads/AppleMusicStats', prefix="/AppleMusicStats")
 
 input("\nPress enter to view your stats :)")
 
