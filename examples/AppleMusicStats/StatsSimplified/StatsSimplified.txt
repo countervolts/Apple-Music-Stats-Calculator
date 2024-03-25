@@ -1,0 +1,7 @@
+Total streams: 20,495
+Total minutes streamed: 54,868.2
+Total hours streamed: 914.5
+Total days streamed: 38.1
+Different tracks: 1,730
+Different artists: 570
+
