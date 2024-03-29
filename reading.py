@@ -2,6 +2,8 @@ import os
 import re
 import shutil
 import time
+import platform
+from datetime import datetime
 import pandas as pd
 from tqdm import tqdm
 
@@ -193,6 +195,79 @@ with open(os.path.expanduser('~/Downloads/AppleMusicStats/Stats.txt'), 'w') as f
                 error_file.write(f"Song: {safe_track}\n")
                 error_file.write(f"Error: {str(e)}\n\n")
 
+def write_monthly_stats(df):
+    monthly_dir = os.path.expanduser('~/Downloads/AppleMusicStats/Monthly')
+    os.makedirs(monthly_dir, exist_ok=True)
+
+    df['Date Played'] = pd.to_datetime(df['Date Played'], format='%Y%m%d')
+    df['Month'] = df['Date Played'].dt.month_name()
+    df['Month Number'] = df['Date Played'].dt.month
+    grouped = df.groupby(['Month Number', 'Month'], sort=True)
+
+    # Initialize variables to keep track of the most streamed month
+    max_streams = 0
+    most_streamed_month = None
+    most_streamed_month_data = None
+
+    for (month_number, name), group in grouped:
+        month_dir = os.path.join(monthly_dir, f'{month_number:02d}_{name}')
+        os.makedirs(month_dir, exist_ok=True)
+
+        streams = len(group)
+        minutes_streamed = group['Play Duration Minutes'].sum()
+        hours_streamed = round(minutes_streamed / 60, 1)
+        max_songs = group['Track Description'].nunique()
+        different_artists = group['Artist'].nunique()
+
+        daily_grouped = group.groupby(group['Date Played'].dt.to_period('D'))
+        most_streamed_day = daily_grouped.size().idxmax()
+        total_streams_most_streamed_day = daily_grouped.size().max()
+
+        most_streamed_day_data = group[group['Date Played'].dt.to_period('D') == most_streamed_day]
+        minutes_streamed_most_streamed_day = most_streamed_day_data['Play Duration Minutes'].sum()
+        hours_streamed_most_streamed_day = round(minutes_streamed_most_streamed_day / 60, 1)
+
+        most_streamed_song = group['Track Description'].value_counts().idxmax()
+        most_streamed_artist = group['Artist'].value_counts().idxmax()
+
+        file_path = os.path.join(month_dir, f'{name}Stats.txt')
+        with open(file_path, 'w') as f:
+            f.write(f"Total streams: {streams:,}\n")
+            f.write(f"Total minutes streamed: {minutes_streamed:,.2f}\n")
+            f.write(f"Total hours streamed: {hours_streamed:,.2f}\n")
+            f.write(f"Different tracks: {max_songs:,}\n")
+            f.write(f"Different artists: {different_artists:,}\n\n")
+            f.write("----------------Monthly Stats----------------\n")
+            f.write(f"Most streamed day: {most_streamed_day.strftime('%Y-%m-%d')}\n")
+            f.write(f"Total streams on most streamed day: {total_streams_most_streamed_day:,}\n")
+            f.write(f"Total minutes streamed on most streamed day: {minutes_streamed_most_streamed_day:,.2f}\n")
+            f.write(f"Total hours streamed on most streamed day: {hours_streamed_most_streamed_day:,.2f}\n")
+            f.write(f"Most streamed artist: {most_streamed_artist}\n")
+            f.write(f"Most streamed song: {most_streamed_song}\n")
+
+        # Check if this month has more streams than the current most streamed month
+        if streams > max_streams:
+            max_streams = streams
+            most_streamed_month = name
+            most_streamed_month_data = group
+
+    # Write the most streamed month data to a file
+    most_streamed_song = most_streamed_month_data['Track Description'].value_counts().idxmax()
+    most_streamed_artist = most_streamed_month_data['Artist'].value_counts().idxmax()
+    minutes_streamed = most_streamed_month_data['Play Duration Minutes'].sum()
+    hours_streamed = round(minutes_streamed / 60, 1)
+
+    summary_file_path = os.path.join(monthly_dir, 'Summary.txt')
+    with open(summary_file_path, 'w') as f:
+        f.write(f"Most streamed month: {most_streamed_month}\n")
+        f.write(f"Total streams in most streamed month: {max_streams:,}\n")
+        f.write(f"Total minutes streamed in most streamed month: {minutes_streamed:,.2f}\n")
+        f.write(f"Total hours streamed in most streamed month: {hours_streamed:,.2f}\n")
+        f.write(f"Most streamed artist in most streamed month: {most_streamed_artist}\n")
+        f.write(f"Most streamed song in most streamed month: {most_streamed_song}\n")
+
+write_monthly_stats(df)
+
 os.makedirs(os.path.expanduser('~/Downloads/AppleMusicStats/StatsSimplified'), exist_ok=True)
 
 def write_top_artists_func(top_artists_param, num_artists_param):
@@ -238,16 +313,21 @@ def print_directory_contents(path, prefix=""):
         print(f"\n{'*' * 30}")
         print(f"{prefix}")
         print(f"Number of files: {num_files}")
-        print(f"Number of folder: {num_dirs}")
+        print(f"Number of folders: {num_dirs}")
         print(f"{'*' * 30}\n")
         for child in os.listdir(expanded_path):
             child_path = os.path.join(expanded_path, child)
-            if os.path.isdir(child_path):
+            if os.path.isdir(child_path) and child != 'Monthly':
                 print_directory_contents(child_path, prefix=f"{prefix}/{child}")
+            elif child == 'Monthly':
+                print(f"Skipping contents of {prefix}/{child} (too many folders to display!)")
 
 print("Here are the created files:")
 print_directory_contents('~/Downloads/AppleMusicStats', prefix="/AppleMusicStats")
 
-input("\nPress enter to view your stats :)")
+input("Press enter to view your stats :)")
 
-os.system("start " + os.path.expanduser('~/Downloads/AppleMusicStats'))
+if platform.system() == "Windows":
+    os.system("start " + os.path.expanduser('~/Downloads/AppleMusicStats'))
+else:
+    os.system("xdg-open " + os.path.expanduser('~/Downloads/AppleMusicStats'))
