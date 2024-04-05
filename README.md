@@ -12,7 +12,7 @@ thanks! <3
 5. Scroll down and click the blue “continue” button
 
 ## Executable!
-download and run [reading.exe](https://github.com/countervolts/Apple-Music-Stats-Calculator/releases/tag/Artists-Update)
+download and run [reading.exe](https://github.com/countervolts/Apple-Music-Stats-Calculator/releases) (or most recent version)
 
 ## How to run the code
 1. run ```git clone https://github.com/countervolts/Apple-Music-Stats-Calculator```
