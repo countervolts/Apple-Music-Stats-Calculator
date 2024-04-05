@@ -1,4 +1,5 @@
 requests
 pandas
 tqdm
+bs4
 spotipy
