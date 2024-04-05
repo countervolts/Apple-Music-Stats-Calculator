@@ -3,9 +3,20 @@ import re
 import shutil
 import time
 import platform
+import requests
+import base64
+import random
+import string
+import urllib.parse
 from datetime import datetime
 import pandas as pd
 from tqdm import tqdm
+from urllib.parse import quote
+from bs4 import BeautifulSoup
+#ironicly using spotify api 
+import spotipy
+from spotipy.oauth2 import SpotifyClientCredentials
+
 
 downloads_dir = os.path.join(os.path.expanduser('~'), 'Downloads')
 
@@ -146,7 +157,7 @@ def create_artist_files(data_frame, top_artists_list, max_artists_count):
                 print(f"Failed to open file for artist: {safe_artist_filename}")
                 print(f"Error: {os_error}")
     else:
-        print("it took soooooooooooo long to write this code u suck pls use it >:(")
+        print("\n")
 create_artist_files(df, top_artists, max_artists)
                             
 with open(os.path.expanduser('~/Downloads/AppleMusicStats/Stats.txt'), 'w') as f:
@@ -204,7 +215,6 @@ def write_monthly_stats(df):
     df['Month Number'] = df['Date Played'].dt.month
     grouped = df.groupby(['Month Number', 'Month'], sort=True)
 
-    # Initialize variables to keep track of the most streamed month
     max_streams = 0
     most_streamed_month = None
     most_streamed_month_data = None
@@ -245,13 +255,11 @@ def write_monthly_stats(df):
             f.write(f"Most streamed artist: {most_streamed_artist}\n")
             f.write(f"Most streamed song: {most_streamed_song}\n")
 
-        # Check if this month has more streams than the current most streamed month
         if streams > max_streams:
             max_streams = streams
             most_streamed_month = name
             most_streamed_month_data = group
 
-    # Write the most streamed month data to a file
     most_streamed_song = most_streamed_month_data['Track Description'].value_counts().idxmax()
     most_streamed_artist = most_streamed_month_data['Artist'].value_counts().idxmax()
     minutes_streamed = most_streamed_month_data['Play Duration Minutes'].sum()
@@ -305,25 +313,207 @@ with open(os.path.expanduser('~/Downloads/AppleMusicStats/StatsSimplified/StatsS
     f.write(f"Different tracks: {max_songs:,}\n")
     f.write(f"Different artists: {different_artists:,}\n\n")
 
-def print_directory_contents(path, prefix=""):
-    expanded_path = os.path.expanduser(path)
-    if os.path.exists(expanded_path):
-        num_files = len([f for f in os.listdir(expanded_path) if os.path.isfile(os.path.join(expanded_path, f))])
-        num_dirs = len([d for d in os.listdir(expanded_path) if os.path.isdir(os.path.join(expanded_path, d))])
-        print(f"\n{'*' * 30}")
-        print(f"{prefix}")
-        print(f"Number of files: {num_files}")
-        print(f"Number of folders: {num_dirs}")
-        print(f"{'*' * 30}\n")
-        for child in os.listdir(expanded_path):
-            child_path = os.path.join(expanded_path, child)
-            if os.path.isdir(child_path) and child != 'Monthly':
-                print_directory_contents(child_path, prefix=f"{prefix}/{child}")
-            elif child == 'Monthly':
-                print(f"Skipping contents of {prefix}/{child} (too many folders to display!)")
+print("Everything has be correctly written!")
+print("Now writing website code...")
+print("please wait")
 
-print("Here are the created files:")
-print_directory_contents('~/Downloads/AppleMusicStats', prefix="/AppleMusicStats")
+client_id = 'NUHUH YOU CANT SEE THIS'
+client_secret = 'NUHUH YOU CANT SEE THIS' 
+
+client_credentials_manager = SpotifyClientCredentials(client_id=client_id, client_secret=client_secret)
+sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
+
+def write_spotify_ids(filename, type, ids_filename):
+    filename = os.path.expanduser(filename)
+    ids_filename = os.path.expanduser(ids_filename)
+
+    with open(filename, 'r', encoding='utf-8') as f:
+        lines = f.readlines()
+
+    top_ten = lines[1:11]
+    names = [line.split('. ')[1].split(' - ')[0] if type == 'artist' else line.split('. ')[1].split(' - ')[1] for line in top_ten]
+    artists = [line.split('. ')[1].split(' - ')[0] for line in top_ten] if type == 'track' else None
+
+    ids = []
+    for i, name in enumerate(names):
+        query = f'artist:{artists[i]} track:{name}' if type == 'track' else name
+        results = sp.search(q=query, type=type, limit=1)
+        id = results['tracks']['items'][0]['id'] if type == 'track' else results['artists']['items'][0]['id']
+        ids.append(id)
+
+        if type == 'track':
+            album = sp.album(results['tracks']['items'][0]['album']['id'])
+            image_url = album['images'][0]['url']
+        else:
+            artist = sp.artist(id)
+            image_url = artist['images'][0]['url']
+
+        response = requests.get(image_url)
+
+        safe_name = quote(name, safe='')
+        image_filename = os.path.expanduser(f'~/Downloads/AppleMusicStats/Images/{type}s/{safe_name}.jpg')
+        os.makedirs(os.path.dirname(image_filename), exist_ok=True)
+        with open(image_filename, 'wb') as f:
+            f.write(response.content)
+
+    with open(ids_filename, 'w', encoding='utf-8') as f:
+        for id in ids:
+            f.write(id + '\n')
+
+    return ids
+
+print("Got Spotify ID's... ✔️")
+
+write_spotify_ids('~/Downloads/AppleMusicStats/StatsSimplified/TopArtists.txt', 'artist', '~/Downloads/AppleMusicStats/StatsSimplified/TopArtistIDs.txt')
+write_spotify_ids('~/Downloads/AppleMusicStats/StatsSimplified/TopSongs.txt', 'track', '~/Downloads/AppleMusicStats/StatsSimplified/TopSongIDs.txt')
+
+print("Wrote Spotify ID's... ✔️")
+
+def upload_to_github(filename, repo, path, token):
+    with open(filename, 'rb') as f:
+        content = base64.b64encode(f.read()).decode('utf-8')
+
+    url = f'https://api.github.com/repos/{repo}/contents/{path}'
+    headers = {
+        'Authorization': f'token {token}',
+        'Content-Type': 'application/json'
+    }
+    data = {
+        'message': 'ur cute',
+        'content': content
+    }
+
+    response = requests.put(url, headers=headers, json=data)
+    response.raise_for_status()
+
+def upload_to_github(filename, repo, path, token):
+    with open(filename, 'rb') as f:
+        content = base64.b64encode(f.read()).decode('utf-8')
+
+    url = f'https://api.github.com/repos/{repo}/contents/{path}'
+    headers = {
+        'Authorization': f'token {token}',
+        'Content-Type': 'application/json'
+    }
+    data = {
+        'message': f'ur cute :3',
+        'content': content
+    }
+
+    response = requests.put(url, headers=headers, json=data)
+    response.raise_for_status()
+
+print('Calling you cute... :3 ✔️')
+
+def generate_html_content():
+    username = ''.join(random.choice(string.ascii_letters) for _ in range(5))
+
+    base_path = os.path.expanduser('~/Downloads/AppleMusicStats/StatsSimplified')
+    artist_file = os.path.join(base_path, 'TopArtists.txt')
+    song_file = os.path.join(base_path, 'TopSongs.txt')
+    stats_file = os.path.join(base_path, 'StatsSimplified.txt')
+
+    with open(stats_file, 'r') as f:
+        stats = f.readlines()
+
+    stats_html = f"""
+    <div class="box">
+        <p class="left-text">{username}</p>
+        <p class="right-text">{stats[0]}<br>
+        {stats[1]}<br>
+        {stats[2]}<br>
+        {stats[3]}<br>
+        {stats[4]}<br>
+        {stats[5]}</p>
+    </div>
+    """
+    print('Wrote Stats... ✔️')
+
+    artists_html = '<div class="box box-left">\n'
+    with open(artist_file, 'r') as f:
+        artists = f.readlines()[1:11]
+        for artist in artists:
+            full_name, streams = artist.split(' - ', 1)
+            _, name = full_name.split('. ', 1)
+            name_without_spaces = name.replace(' ', '')
+            artists_html += f"""
+            <div class="section">
+                <img src="/applemusic/users/{username}/images/artists/{name_without_spaces}.jpg" alt="{name}">
+                <p>{name}</p>
+                <p>{streams}</p>
+            </div>
+            """
+    artists_html += '</div>\n'
+
+    songs_html = '<div class="box box-right">\n'
+    with open(song_file, 'r') as f:
+            songs = f.readlines()[1:11]
+            for song in songs:
+                _, full_name = song.split('. ', 1)
+                artist_name, song_name, streams = full_name.split(' - ', 2) 
+                song_name_without_spaces = song_name.replace(' ', '').replace('/', '')
+                hours_played = streams.split(' ')[0]
+                songs_html += f"""
+                <div class="section">
+                    <img src="/applemusic/users/{username}/images/songs/{song_name_without_spaces}.jpg" alt="{song_name}">
+                    <p>{song_name}</p>
+                    <p>{hours_played} hours</p>
+                </div>
+                """
+    songs_html += '</div>\n'
+    with open('website/styles.css', 'r') as f:
+        styles = f.read()
+
+    html_content = f"""
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <style>
+        {styles}
+        </style>
+    </head>
+    <body>
+    {stats_html}
+    {artists_html}
+    {songs_html}
+    </body>
+    </html>
+    """
+
+    print('Wrote HTML code... ✔️')
+
+    soup = BeautifulSoup(html_content, 'html.parser')
+    pretty_html = soup.prettify()
+
+    with open('output.html', 'w') as f:
+        f.write(pretty_html)
+
+    with open('website/index.html', 'w') as f:
+        f.write(html_content)
+
+    print('Beautify the HTML code... ✔️')
+
+    github_pat = 'NUHUH YOU CANT SEE THIS' # dont steal please man :(
+
+    repo = 'countervolts/59problems'
+    upload_to_github('website/index.html', repo, f'applemusic/users/{username}/index.html', github_pat)
+
+    image_dirs = {
+        'artists': os.path.expanduser('~/Downloads/AppleMusicStats/Images/artists'),
+        'songs': os.path.expanduser('~/Downloads/AppleMusicStats/Images/tracks')
+    }
+
+    for image_type, image_dir in image_dirs.items():
+        for image_file in os.listdir(image_dir):
+            full_path = os.path.join(image_dir, image_file)
+            if os.path.isfile(full_path):
+                decoded_image_file = urllib.parse.unquote(image_file)
+                image_file_without_special_chars = decoded_image_file.replace(' ', '').replace('/', '')
+                image_path = f'applemusic/users/{username}/images/{image_type}/{image_file_without_special_chars}'
+                upload_to_github(full_path, repo, image_path, github_pat)
+
+    print('Wrote code to GitHub repo... ✔️')
+generate_html_content()
 
 input("Press enter to view your stats :)")
 
