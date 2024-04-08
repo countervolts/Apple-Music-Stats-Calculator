@@ -2,11 +2,9 @@ import os
 import re
 import shutil
 import time
-import platform
 import requests
 import base64
-import random
-import string
+import subprocess
 import urllib.parse
 from datetime import datetime
 import pandas as pd
@@ -313,211 +311,269 @@ with open(os.path.expanduser('~/Downloads/AppleMusicStats/StatsSimplified/StatsS
     f.write(f"Different tracks: {max_songs:,}\n")
     f.write(f"Different artists: {different_artists:,}\n\n")
 
-print("Everything has be correctly written!")
-print("Now writing website code...")
-print("please wait")
+print('\033[91m' + 'from now on, the code will create a website for you to view your stats on,')
+print('this will include a website with your top 10 artists and songs, along with general stats')
+print('this will be written to a folder in your downloads folder called AppleMusicStats')
+print('if you are just running the source code, it wont work, you need to run the executable')
+print('otherwise, your stats can be found at ~/Downloads/AppleMusicStats' + '\033[0m' )
+user_input = input('Press enter if you would like to continue with website creation, or type "n" to just open the folder with all your stats: ').lower()
 
-client_id = 'NUHUH YOU CANT SEE THIS'
-client_secret = 'NUHUH YOU CANT SEE THIS' 
+if user_input.lower() == 'n':
+    stats_folder = os.path.expanduser('~/Downloads/AppleMusicStats')
+    subprocess.run(['open', stats_folder])
+else:
+    print("\nNow writing website code...")
+    print("please wait")
 
-client_credentials_manager = SpotifyClientCredentials(client_id=client_id, client_secret=client_secret)
-sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
+    client_id = 'Spotify_API_Is_Free'
+    client_secret = 'Spotify_API_Is_Free'
 
-def write_spotify_ids(filename, type, ids_filename):
-    filename = os.path.expanduser(filename)
-    ids_filename = os.path.expanduser(ids_filename)
+    client_credentials_manager = SpotifyClientCredentials(client_id=client_id, client_secret=client_secret)
+    sp = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
 
-    with open(filename, 'r', encoding='utf-8') as f:
-        lines = f.readlines()
+    def write_spotify_ids(filename, type, ids_filename):
+        filename = os.path.expanduser(filename)
+        ids_filename = os.path.expanduser(ids_filename)
 
-    top_ten = lines[1:11]
-    names = [line.split('. ')[1].split(' - ')[0] if type == 'artist' else line.split('. ')[1].split(' - ')[1] for line in top_ten]
-    artists = [line.split('. ')[1].split(' - ')[0] for line in top_ten] if type == 'track' else None
+        with open(filename, 'r', encoding='utf-8') as f:
+            lines = f.readlines()
 
-    ids = []
-    for i, name in enumerate(names):
-        query = f'artist:{artists[i]} track:{name}' if type == 'track' else name
-        results = sp.search(q=query, type=type, limit=1)
-        id = results['tracks']['items'][0]['id'] if type == 'track' else results['artists']['items'][0]['id']
-        ids.append(id)
+        top_ten = lines[1:11]
+        names = [line.split('. ')[1].split(' - ')[0] if type == 'artist' else line.split('. ')[1].split(' - ')[1] for line in top_ten]
+        artists = [line.split('. ')[1].split(' - ')[0] for line in top_ten] if type == 'track' else None
 
-        if type == 'track':
-            album = sp.album(results['tracks']['items'][0]['album']['id'])
-            image_url = album['images'][0]['url']
-        else:
-            artist = sp.artist(id)
-            image_url = artist['images'][0]['url']
+        ids = []
+        for i, name in enumerate(names):
+            query = f'artist:{artists[i]} track:{name}' if type == 'track' else name
+            results = sp.search(q=query, type=type, limit=1)
+            id = results['tracks']['items'][0]['id'] if type == 'track' else results['artists']['items'][0]['id']
+            ids.append(id)
 
-        response = requests.get(image_url)
+            if type == 'track':
+                album = sp.album(results['tracks']['items'][0]['album']['id'])
+                image_url = album['images'][0]['url']
+            else:
+                artist = sp.artist(id)
+                image_url = artist['images'][0]['url']
 
-        safe_name = quote(name, safe='')
-        image_filename = os.path.expanduser(f'~/Downloads/AppleMusicStats/Images/{type}s/{safe_name}.jpg')
-        os.makedirs(os.path.dirname(image_filename), exist_ok=True)
-        with open(image_filename, 'wb') as f:
-            f.write(response.content)
+            response = requests.get(image_url)
 
-    with open(ids_filename, 'w', encoding='utf-8') as f:
-        for id in ids:
-            f.write(id + '\n')
+            safe_name = quote(name, safe='')
+            image_filename = os.path.expanduser(f'~/Downloads/AppleMusicStats/Images/{type}s/{safe_name}.jpg')
+            os.makedirs(os.path.dirname(image_filename), exist_ok=True)
+            with open(image_filename, 'wb') as f:
+                f.write(response.content)
 
-    return ids
+        with open(ids_filename, 'w', encoding='utf-8') as f:
+            for id in ids:
+                f.write(id + '\n')
 
-print("Got Spotify ID's... ✔️")
+        return ids
 
-write_spotify_ids('~/Downloads/AppleMusicStats/StatsSimplified/TopArtists.txt', 'artist', '~/Downloads/AppleMusicStats/StatsSimplified/TopArtistIDs.txt')
-write_spotify_ids('~/Downloads/AppleMusicStats/StatsSimplified/TopSongs.txt', 'track', '~/Downloads/AppleMusicStats/StatsSimplified/TopSongIDs.txt')
+    print("\nCollecting Spotify ID's... :)")
 
-print("Wrote Spotify ID's... ✔️")
+    write_spotify_ids('~/Downloads/AppleMusicStats/StatsSimplified/TopArtists.txt', 'artist',  '~/Downloads/AppleMusicStats/StatsSimplified/TopArtistIDs.txt')
+    write_spotify_ids('~/Downloads/AppleMusicStats/StatsSimplified/TopSongs.txt', 'track',     '~/Downloads/AppleMusicStats/StatsSimplified/TopSongIDs.txt')
 
-def upload_to_github(filename, repo, path, token):
-    with open(filename, 'rb') as f:
-        content = base64.b64encode(f.read()).decode('utf-8')
+    print("Collected Spotify ID's... :)\n")
 
-    url = f'https://api.github.com/repos/{repo}/contents/{path}'
-    headers = {
-        'Authorization': f'token {token}',
-        'Content-Type': 'application/json'
-    }
-    data = {
-        'message': 'ur cute',
-        'content': content
-    }
+    def upload_to_github(filename, repo, path, token):
+        with open(filename, 'rb') as f:
+            content = base64.b64encode(f.read()).decode('utf-8')
 
-    response = requests.put(url, headers=headers, json=data)
-    response.raise_for_status()
+        url = f'https://api.github.com/repos/{repo}/contents/{path}'
+        headers = {
+            'Authorization': f'token {token}',
+            'Content-Type': 'application/json'
+        }
+        data = {
+            'message': 'ur cute',
+            'content': content
+        }
 
-def upload_to_github(filename, repo, path, token):
-    with open(filename, 'rb') as f:
-        content = base64.b64encode(f.read()).decode('utf-8')
+        response = requests.put(url, headers=headers, json=data)
+        response.raise_for_status()
 
-    url = f'https://api.github.com/repos/{repo}/contents/{path}'
-    headers = {
-        'Authorization': f'token {token}',
-        'Content-Type': 'application/json'
-    }
-    data = {
-        'message': f'ur cute :3',
-        'content': content
-    }
+    def upload_to_github(file_path, repo, path_in_repo, github_pat):
+        with open(file_path, 'rb') as f:
+            content = base64.b64encode(f.read()).decode('utf-8')
 
-    response = requests.put(url, headers=headers, json=data)
-    response.raise_for_status()
+        url = f'https://api.github.com/repos/{repo}/contents/{path_in_repo}'
+        headers = {'Authorization': f'token {github_pat}'}
+        data = {
+            'message': f'ur cute :3',
+            'content': content
+        }
+        response = requests.put(url, headers=headers, json=data)
 
-print('Calling you cute... :3 ✔️')
+    print('Calling you cute... :3\n')
 
-def generate_html_content():
-    username = ''.join(random.choice(string.ascii_letters) for _ in range(5))
+    def generate_html_content():
+        styles_file = 'website/styles.css'
+        html_file = 'website/index.html'
+        website_folder = 'website'
 
-    base_path = os.path.expanduser('~/Downloads/AppleMusicStats/StatsSimplified')
-    artist_file = os.path.join(base_path, 'TopArtists.txt')
-    song_file = os.path.join(base_path, 'TopSongs.txt')
-    stats_file = os.path.join(base_path, 'StatsSimplified.txt')
+        if not os.path.exists(website_folder):
+            os.makedirs(website_folder)
 
-    with open(stats_file, 'r') as f:
-        stats = f.readlines()
+        print('Checking for necessary files...')
 
-    stats_html = f"""
-    <div class="box">
-        <p class="left-text">{username}</p>
-        <p class="right-text">{stats[0]}<br>
-        {stats[1]}<br>
-        {stats[2]}<br>
-        {stats[3]}<br>
-        {stats[4]}<br>
-        {stats[5]}</p>
-    </div>
-    """
-    print('Wrote Stats... ✔️')
+        if not os.path.exists(styles_file):
+            print('File not found.. :(')
+            url = 'https://raw.githubusercontent.com/countervolts/Apple-Music-Stats-Calculator/main/website/styles.css'
+            r = requests.get(url)
+            with open(styles_file, 'w') as f:
+                f.write(r.text)
 
-    artists_html = '<div class="box box-left">\n'
-    with open(artist_file, 'r') as f:
-        artists = f.readlines()[1:11]
-        for artist in artists:
-            full_name, streams = artist.split(' - ', 1)
-            _, name = full_name.split('. ', 1)
-            name_without_spaces = name.replace(' ', '')
-            artists_html += f"""
-            <div class="section">
-                <img src="/applemusic/users/{username}/images/artists/{name_without_spaces}.jpg" alt="{name}">
-                <p>{name}</p>
-                <p>{streams}</p>
-            </div>
-            """
-    artists_html += '</div>\n'
+        if not os.path.exists(html_file):
+            print('File not found.. :(')
+            url = 'https://raw.githubusercontent.com/countervolts/Apple-Music-Stats-Calculator/main/website/index.html'
+            r = requests.get(url)
+            with open(html_file, 'w') as f:
+                f.write(r.text)
+        print('Files downloaded successfully... :D')
 
-    songs_html = '<div class="box box-right">\n'
-    with open(song_file, 'r') as f:
-            songs = f.readlines()[1:11]
-            for song in songs:
-                _, full_name = song.split('. ', 1)
-                artist_name, song_name, streams = full_name.split(' - ', 2) 
-                song_name_without_spaces = song_name.replace(' ', '').replace('/', '')
-                hours_played = streams.split(' ')[0]
-                songs_html += f"""
+        print('Files located successfully... :D\n')
+
+        github_pat = 'why'
+
+        username = input("Enter your username (up to 16 characters): ")[:16]
+
+        if "/" in username:
+            print("you cant have / in ur username cause it will break repo")
+            return
+
+        repo = 'countervolts/59problems'
+        url = f'https://api.github.com/repos/{repo}/contents/spotify/users/{username}'
+        headers = {'Authorization': f'token {github_pat}'}
+        response = requests.get(url, headers=headers)
+
+        if response.status_code == 200:
+            print("already in use re-run code please")
+            return
+        elif response.status_code != 404:
+            print("github or network error")
+            return
+
+        base_path = os.path.expanduser('~/Downloads/AppleMusicStats/StatsSimplified')
+        artist_file = os.path.join(base_path, 'TopArtists.txt')
+        song_file = os.path.join(base_path, 'TopSongs.txt')
+        stats_file = os.path.join(base_path, 'StatsSimplified.txt')
+
+        with open(stats_file, 'r') as f:
+            stats = f.readlines()
+
+        print('\nDeciding where to put everything... :)')
+
+        stats_html = f"""
+        <div class="box">
+            <p class="left-text">{username}</p>
+            <p class="right-text">{stats[0]}<br>
+            {stats[1]}<br>
+            {stats[2]}<br>
+            {stats[3]}<br>
+            {stats[4]}<br>
+            {stats[5]}</p>
+        </div>
+        """
+        print('Decided where to put stuff... :)\n')
+        print('Writing website code...')
+
+        artists_html = '<div class="box box-left">\n'
+        with open(artist_file, 'r') as f:
+            artists = f.readlines()[1:11]
+            for artist in artists:
+                full_name, streams = artist.split(' - ', 1)
+                _, name = full_name.split('. ', 1)
+                name_without_spaces = name.replace(' ', '')
+                artists_html += f"""
                 <div class="section">
-                    <img src="/applemusic/users/{username}/images/songs/{song_name_without_spaces}.jpg" alt="{song_name}">
-                    <p>{song_name}</p>
-                    <p>{hours_played} hours</p>
+                    <img src="/applemusic/users/{username}/images/artists/{name_without_spaces}.jpg" alt="{name}">
+                    <p>{name}</p>
+                    <p>{streams}</p>
                 </div>
                 """
-    songs_html += '</div>\n'
-    with open('website/styles.css', 'r') as f:
-        styles = f.read()
+        artists_html += '</div>\n'
 
-    html_content = f"""
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <style>
-        {styles}
-        </style>
-    </head>
-    <body>
-    {stats_html}
-    {artists_html}
-    {songs_html}
-    </body>
-    </html>
-    """
+        songs_html = '<div class="box box-right">\n'
+        with open(song_file, 'r') as f:
+                songs = f.readlines()[1:11]
+                for song in songs:
+                    _, full_name = song.split('. ', 1)
+                    artist_name, song_name, streams = full_name.split(' - ', 2)
+                    song_name = re.sub(r' \(feat.*', '', song_name)
+                    song_name_without_spaces = song_name.replace(' ', '').replace('/', '').replace('!', '').replace('(',    '').replace(')', '')
+                    hours_played = streams.split(' ')[0]
+                    songs_html += f"""
+                    <div class="section">
+                        <img src="/applemusic/users/{username}/images/songs/{song_name_without_spaces}.jpg" alt="{song_name}">
+                        <p>{song_name}</p>
+                        <p>{hours_played} hours</p>
+                    </div>
+                    """
+        songs_html += '</div>\n'
 
-    print('Wrote HTML code... ✔️')
+        styles_file = 'website/styles.css'
+        html_file = 'website/index.html'
+        website_folder = 'website'
 
-    soup = BeautifulSoup(html_content, 'html.parser')
-    pretty_html = soup.prettify()
+        with open(styles_file, 'r') as f:
+            styles = f.read()
 
-    with open('output.html', 'w') as f:
-        f.write(pretty_html)
+        html_content = f"""
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <style>
+            {styles}
+            </style>
+        </head>
+        <body>
+        {stats_html}
+        {artists_html}
+        {songs_html}
+        </body>
+        </html>
+        """
 
-    with open('website/index.html', 'w') as f:
-        f.write(html_content)
+        print('Wrote all code with no issues... :D')
 
-    print('Beautify the HTML code... ✔️')
+        soup = BeautifulSoup(html_content, 'html.parser')
+        pretty_html = soup.prettify()
 
-    github_pat = 'NUHUH YOU CANT SEE THIS' # dont steal please man :(
+        with open('output.html', 'w') as f:
+            f.write(pretty_html)
 
-    repo = 'countervolts/59problems'
-    upload_to_github('website/index.html', repo, f'applemusic/users/{username}/index.html', github_pat)
+        with open(html_file, 'w') as f:
+            f.write(html_content)
 
-    image_dirs = {
-        'artists': os.path.expanduser('~/Downloads/AppleMusicStats/Images/artists'),
-        'songs': os.path.expanduser('~/Downloads/AppleMusicStats/Images/tracks')
-    }
+        print('Code made pretty... :D')
+        github_pat = 'why'
+        repo = 'countervolts/59problems'
+        upload_to_github('website/index.html', repo, f'applemusic/users/{username}/index.html', github_pat)
 
-    for image_type, image_dir in image_dirs.items():
-        for image_file in os.listdir(image_dir):
-            full_path = os.path.join(image_dir, image_file)
-            if os.path.isfile(full_path):
-                decoded_image_file = urllib.parse.unquote(image_file)
-                image_file_without_special_chars = decoded_image_file.replace(' ', '').replace('/', '')
-                image_path = f'applemusic/users/{username}/images/{image_type}/{image_file_without_special_chars}'
-                upload_to_github(full_path, repo, image_path, github_pat)
+        image_dirs = {
+            'artists': os.path.expanduser('~/Downloads/AppleMusicStats/Images/artists'),
+            'songs': os.path.expanduser('~/Downloads/AppleMusicStats/Images/tracks')
+        }
 
-    print('Wrote code to GitHub repo... ✔️')
-generate_html_content()
+        for image_type, image_dir in image_dirs.items():
+            for image_file in os.listdir(image_dir):
+                full_path = os.path.join(image_dir, image_file)
+                if os.path.isfile(full_path):
+                    decoded_image_file = urllib.parse.unquote(image_file)
+                    image_file_without_special_chars = re.sub(r'feat*', '', decoded_image_file)
+                    image_file_without_special_chars = image_file_without_special_chars.replace(' ', '').replace('/', '').replace('!',  '').replace('(', '').replace(')', '')
+                    image_path = f'applemusic/users/{username}/images/{image_type}/{image_file_without_special_chars}'
+                    upload_to_github(full_path, repo, image_path, github_pat)
 
-input("Press enter to view your stats :)")
+        print(f'your website is located at https://59problems.me/applemusic/users/{username}')
 
-if platform.system() == "Windows":
+        print('\nWrote code to GitHub repo with no issues!!! :)\n')
+    generate_html_content()
+
+    print(f"Stats where also written to {os.path.expanduser('~/Downloads/AppleMusicStats')}")
+
+    input("\nPress Enter to view you stats :)")
+
     os.system("start " + os.path.expanduser('~/Downloads/AppleMusicStats'))
-else:
-    os.system("xdg-open " + os.path.expanduser('~/Downloads/AppleMusicStats'))
