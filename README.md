@@ -23,11 +23,12 @@ download and run [reading.exe](https://github.com/countervolts/Apple-Music-Stats
 6. when ran it will automaticallly scan your downloads for the play history daily tracks file and calculate
 
 ## Examples
-1. [Command Prompt Output](https://github.com/countervolts/Apple-Music-Stats-Calculator/blob/main/examples/CommandPromptOutput.txt)
-2. [Artists Folder](https://github.com/countervolts/Apple-Music-Stats-Calculator/tree/main/examples/AppleMusicStats/Artists)
-3. [Stats.txt Output](https://github.com/countervolts/Apple-Music-Stats-Calculator/blob/main/examples/AppleMusicStats/Stats.txt)  
-4. [StatsSimplified](https://github.com/countervolts/Apple-Music-Stats-Calculator/tree/main/examples/AppleMusicStats/StatsSimplified)
-5. [AppleMusicStats Folder Output](https://github.com/countervolts/Apple-Music-Stats-Calculator/tree/main/examples/AppleMusicStats)
+1. [Website](https://59problems.me/applemusic/users/ayo/)
+2. [Command Prompt Output](https://github.com/countervolts/Apple-Music-Stats-Calculator/blob/main/examples/CommandPromptOutput.txt)
+3. [Artists Folder](https://github.com/countervolts/Apple-Music-Stats-Calculator/tree/main/examples/AppleMusicStats/Artists)
+4. [Stats.txt Output](https://github.com/countervolts/Apple-Music-Stats-Calculator/blob/main/examples/AppleMusicStats/Stats.txt)  
+5. [StatsSimplified](https://github.com/countervolts/Apple-Music-Stats-Calculator/tree/main/examples/AppleMusicStats/StatsSimplified)
+6. [AppleMusicStats Folder Output](https://github.com/countervolts/Apple-Music-Stats-Calculator/tree/main/examples/AppleMusicStats)
 
 ## Support / Suggestions
 my discord is [._ayo](https://discord.com/users/488368000055902228) <--- or just click the link
