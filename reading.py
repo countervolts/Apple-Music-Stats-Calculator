@@ -38,12 +38,16 @@ df = df[df['Media type'] != 'VIDEO']
 
 for i, row in df.iterrows():
     pbar.update(1)
-    artist = row['Track Description'].split(' - ')[0]
-    if ' & ' in artist:
-        main_artist = artist.split(' & ')[0]
+    track_description = row['Track Description']
+    if isinstance(track_description, str):
+        artist = track_description.split(' - ')[0]
+        if ' & ' in artist:
+            main_artist = artist.split(' & ')[0]
+        else:
+            main_artist = artist
+        df.at[i, 'Artist'] = main_artist
     else:
-        main_artist = artist
-    df.at[i, 'Artist'] = main_artist
+        df.at[i, 'Artist'] = None
     df.at[i, 'Play Duration Minutes'] = row['Play Duration Milliseconds'] / 60000
 
 pbar.close()
